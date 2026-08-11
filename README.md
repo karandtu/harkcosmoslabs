@@ -6,7 +6,3 @@ Production-ready static website for GitHub Pages.
 Upload `index.html` and the `assets` folder to the root of the `harkcosmoslabs` GitHub repository. Keep the existing GitHub Pages custom-domain configuration.
 
 Canonical domain: https://www.harkcosmoslabs.com/
-
-
-## V2.1
-Added the multiverse research visual to the Fundamental Research section.
