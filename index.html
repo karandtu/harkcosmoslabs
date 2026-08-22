@@ -393,16 +393,17 @@
 /* BACK */
 
 .flip-card-back {
-    transform: rotateY(180deg);
     background: #030713;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .flip-card-back img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
     display: block;
 }
 
@@ -1179,7 +1180,7 @@
 
             <img
                 src="cosmology-origins-universe.png"
-                alt="Visualization showing the evolution of the Universe from the Big Bang through cosmic inflation, the cosmic microwave background, structure formation and cosmic evolution"
+                alt="Origins of the Universe — Big Bang, cosmic inflation, cosmic microwave background, structure formation and cosmic evolution"
             >
 
         </div>
