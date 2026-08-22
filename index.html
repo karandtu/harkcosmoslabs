@@ -149,25 +149,125 @@
            directory as index.html.
         */
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
+        /* =========================================================
+   INTERACTIVE ANDROMEDA DEEP-ZOOM HERO
+========================================================= */
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #050814 7%,
-                    #050814e8 32%,
-                    #050814b5 52%,
-                    #05081445 80%
-                ),
-                url("hark-cosmos-labs-hero.png")
-                center right / cover no-repeat;
+.hero {
+    min-height: 780px;
+    position: relative;
+    overflow: hidden;
+    background: #02040a;
+    isolation: isolate;
+}
 
-            z-index: -1;
-            opacity: .88;
-        }
+/* OpenSeadragon galaxy canvas */
+#andromeda-viewer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: #02040a;
+}
+
+/*
+   Dark overlay keeps the HARK COSMOS LABS text readable.
+
+   IMPORTANT:
+   pointer-events:none means the mouse can still interact
+   with Andromeda underneath.
+*/
+.hero-shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 8, 20, .96) 0%,
+            rgba(5, 8, 20, .88) 25%,
+            rgba(5, 8, 20, .58) 48%,
+            rgba(5, 8, 20, .18) 72%,
+            rgba(5, 8, 20, .04) 100%
+        );
+
+    pointer-events: none;
+}
+
+/* Hero text sits above the galaxy */
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    min-height: 780px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    pointer-events: none;
+}
+
+/* Links/buttons must remain clickable */
+.hero-content a,
+.hero-content button {
+    pointer-events: auto;
+}
+
+/* Small instruction panel */
+.andromeda-controls-hint {
+    position: absolute;
+    right: 28px;
+    bottom: 28px;
+    z-index: 5;
+
+    padding: 10px 15px;
+
+    border: 1px solid rgba(98, 217, 255, .32);
+    border-radius: 999px;
+
+    background: rgba(3, 7, 19, .72);
+    backdrop-filter: blur(10px);
+
+    color: #c9eaff;
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    pointer-events: none;
+}
+
+/* Make OpenSeadragon controls fit the site */
+.openseadragon-container {
+    background: #02040a !important;
+}
+
+@media (max-width: 800px) {
+
+    .hero,
+    .hero-content {
+        min-height: 700px;
+    }
+
+    .hero-shade {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(5, 8, 20, .92),
+                rgba(5, 8, 20, .55)
+            );
+    }
+
+    .andromeda-controls-hint {
+        right: 15px;
+        bottom: 15px;
+        font-size: 9px;
+    }
+}
 
         .eyebrow {
             color: var(--cyan);
@@ -791,9 +891,28 @@
      HERO
 ============================================================= -->
 
+<!-- =============================================================
+     INTERACTIVE ANDROMEDA DEEP-ZOOM HERO
+============================================================= -->
+
 <header class="hero" id="top">
 
-    <div class="wrap">
+    <!--
+        OpenSeadragon renders the gigantic Andromeda
+        deep-zoom image inside this element.
+    -->
+    <div
+        id="andromeda-viewer"
+        aria-label="Interactive deep zoom view of the Andromeda Galaxy"
+    ></div>
+
+
+    <!-- Readability gradient -->
+    <div class="hero-shade"></div>
+
+
+    <!-- Existing HARK COSMOS LABS hero content -->
+    <div class="wrap hero-content">
 
         <div class="eyebrow">
             Space Intelligence · Fundamental Research · Advanced Computing
@@ -830,6 +949,11 @@
 
         </div>
 
+    </div>
+
+
+    <div class="andromeda-controls-hint">
+        Scroll to Zoom · Drag to Explore · Double Click to Dive Deeper
     </div>
 
 </header>
@@ -1926,6 +2050,110 @@
     </div>
 
 </footer>
+
+    <!-- =============================================================
+     OPEN SEADRAGON
+============================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
+
+
+<script>
+
+const andromedaViewer = OpenSeadragon({
+
+    id: "andromeda-viewer",
+
+    prefixUrl:
+        "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/images/",
+
+    tileSources: "andromeda/andromeda.dzi",
+
+    showNavigator: true,
+    navigatorPosition: "BOTTOM_RIGHT",
+    navigatorSizeRatio: 0.16,
+
+    showNavigationControl: true,
+    showZoomControl: true,
+    showHomeControl: true,
+    showFullPageControl: true,
+
+    gestureSettingsMouse: {
+        scrollToZoom: true,
+        clickToZoom: false,
+        dblClickToZoom: true,
+        dragToPan: true
+    },
+
+    gestureSettingsTouch: {
+        pinchToZoom: true,
+        dragToPan: true,
+        dblClickToZoom: true
+    },
+
+    animationTime: 1.3,
+    springStiffness: 7,
+
+    zoomPerScroll: 1.35,
+    zoomPerClick: 2,
+
+    maxZoomPixelRatio: 2,
+    minZoomImageRatio: 0.8,
+
+    visibilityRatio: 0.5,
+    constrainDuringPan: true,
+
+    blendTime: 0.15,
+
+    maxImageCacheCount: 500,
+    imageLoaderLimit: 8
+
+});
+
+
+andromedaViewer.addHandler("open", function () {
+
+    andromedaViewer.viewport.goHome(true);
+
+});
+
+</script>
+
+
+<!-- =============================================================
+     RESEARCH FLIP CARDS
+============================================================= -->
+
+<script>
+
+document.querySelectorAll(".flip-card").forEach((card) => {
+
+    function toggleCard() {
+
+        const flipped = card.classList.toggle("flipped");
+
+        card.setAttribute(
+            "aria-pressed",
+            flipped ? "true" : "false"
+        );
+    }
+
+    card.addEventListener("click", toggleCard);
+
+    card.addEventListener("keydown", (event) => {
+
+        if (event.key === "Enter" || event.key === " ") {
+
+            event.preventDefault();
+
+            toggleCard();
+        }
+
+    });
+
+});
+
+</script>
 
     <script>
 document.querySelectorAll(".flip-card").forEach((card) => {
