@@ -953,8 +953,8 @@
 
 
     <div class="andromeda-controls-hint">
-        Scroll to Zoom · Drag to Explore · Double Click to Dive Deeper
-    </div>
+    Drag to Explore · Double Click to Zoom · Pinch to Zoom
+</div>
 
 </header>
 
@@ -2067,23 +2067,52 @@ const andromedaViewer = OpenSeadragon({
     prefixUrl:
         "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/images/",
 
+    /*
+       IMPORTANT:
+       These files must actually exist on your website:
+
+       /andromeda/andromeda.dzi
+       /andromeda/andromeda_files/
+    */
     tileSources: "andromeda/andromeda.dzi",
+
+    /* =============================================
+       NAVIGATOR
+    ============================================= */
 
     showNavigator: true,
     navigatorPosition: "BOTTOM_RIGHT",
-    navigatorSizeRatio: 0.16,
+    navigatorSizeRatio: 0.14,
+
+    /* =============================================
+       CONTROLS
+    ============================================= */
 
     showNavigationControl: true,
     showZoomControl: true,
     showHomeControl: true,
     showFullPageControl: true,
 
+    /* =============================================
+       MOUSE
+
+       Mouse wheel remains available for normal
+       webpage scrolling.
+
+       Drag = travel through Andromeda
+       Double click = zoom
+    ============================================= */
+
     gestureSettingsMouse: {
-        scrollToZoom: true,
+        scrollToZoom: false,
         clickToZoom: false,
         dblClickToZoom: true,
         dragToPan: true
     },
+
+    /* =============================================
+       TOUCH / MOBILE
+    ============================================= */
 
     gestureSettingsTouch: {
         pinchToZoom: true,
@@ -2091,34 +2120,64 @@ const andromedaViewer = OpenSeadragon({
         dblClickToZoom: true
     },
 
-    animationTime: 1.3,
+    /* =============================================
+       ZOOM BEHAVIOR
+    ============================================= */
+
+    animationTime: 1.2,
     springStiffness: 7,
 
-    zoomPerScroll: 1.35,
     zoomPerClick: 2,
 
-    maxZoomPixelRatio: 2,
+    maxZoomPixelRatio: 4,
     minZoomImageRatio: 0.8,
 
     visibilityRatio: 0.5,
     constrainDuringPan: true,
 
+    /* =============================================
+       TILE PERFORMANCE
+    ============================================= */
+
     blendTime: 0.15,
 
     maxImageCacheCount: 500,
     imageLoaderLimit: 8
+});
+
+
+/* =============================================
+   WHEN ANDROMEDA SUCCESSFULLY LOADS
+============================================= */
+
+andromedaViewer.addHandler("open", function () {
+
+    console.log("HARK COSMOS LABS: Andromeda Deep Zoom loaded.");
+
+    andromedaViewer.viewport.goHome(false);
 
 });
 
 
-andromedaViewer.addHandler("open", function () {
+/* =============================================
+   ERROR REPORTING
+============================================= */
 
-    andromedaViewer.viewport.goHome(true);
+andromedaViewer.addHandler("open-failed", function (event) {
+
+    console.error(
+        "HARK COSMOS LABS: Unable to load Andromeda Deep Zoom.",
+        event
+    );
 
 });
 
 </script>
 
+
+<!-- =============================================================
+     RESEARCH FLIP CARDS
+============================================================= -->
 
 <!-- =============================================================
      RESEARCH FLIP CARDS
@@ -2155,32 +2214,8 @@ document.querySelectorAll(".flip-card").forEach((card) => {
 
 </script>
 
-    <script>
-document.querySelectorAll(".flip-card").forEach((card) => {
-
-    function toggleCard() {
-
-        const flipped = card.classList.toggle("flipped");
-
-        card.setAttribute(
-            "aria-pressed",
-            flipped ? "true" : "false"
-        );
-    }
-
-    card.addEventListener("click", toggleCard);
-
-    card.addEventListener("keydown", (event) => {
-
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            toggleCard();
-        }
-
-    });
-
-});
-</script>
+</body>
+</html>
 
 
 </body>
