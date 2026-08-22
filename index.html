@@ -317,40 +317,57 @@
                 border-color .25s ease;
         }
 
-        /* =========================================================
-   INTERACTIVE RESEARCH FLIP CARD
+/* =========================================================
+   INTERACTIVE RESEARCH FLIP CARD — STABLE TWO-WAY FLIP
 ========================================================= */
 
 .flip-card {
+    position: relative;
     background: transparent;
     min-height: 410px;
-    perspective: 1200px;
+    height: 410px;
+
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+
     cursor: pointer;
+    border-radius: 14px;
 }
 
 .flip-card-inner {
     position: relative;
+
     width: 100%;
     height: 100%;
-    min-height: 410px;
 
     transition: transform 0.75s cubic-bezier(.2, .7, .2, 1);
+
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+
+    transform: rotateY(0deg);
 }
 
-/* JavaScript adds this class when clicked */
+/* CLICKED STATE */
+
 .flip-card.flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
+
+/* =========================================================
+   BOTH CARD FACES
+========================================================= */
+
 .flip-card-front,
 .flip-card-back {
     position: absolute;
-    inset: 0;
+
+    top: 0;
+    left: 0;
 
     width: 100%;
     height: 100%;
-    min-height: 410px;
 
     border: 1px solid #1a2d4b;
     border-radius: 14px;
@@ -359,11 +376,22 @@
 
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
 }
 
-/* FRONT */
+
+/* =========================================================
+   FRONT SIDE
+========================================================= */
 
 .flip-card-front {
+    z-index: 2;
+
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+
     background:
         linear-gradient(
             145deg,
@@ -390,28 +418,68 @@
 }
 
 
-/* BACK */
+/* =========================================================
+   BACK SIDE
+========================================================= */
 
 .flip-card-back {
+    z-index: 1;
+
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+
     background: #030713;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
+/* Back-side cosmology image */
+
 .flip-card-back img {
+    display: block;
+
     width: 100%;
     height: 100%;
+
     object-fit: contain;
     object-position: center;
-    display: block;
+
+    pointer-events: none;
+
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 
-/* Small flip indicator */
+/* =========================================================
+   FLIPPED FACE LAYER CONTROL
+========================================================= */
+
+/*
+   Explicitly switch the stacking order after the card flips.
+   This prevents the hidden back face from covering the front
+   after the card returns to its original position.
+*/
+
+.flip-card.flipped .flip-card-front {
+    z-index: 1;
+}
+
+.flip-card.flipped .flip-card-back {
+    z-index: 2;
+}
+
+
+/* =========================================================
+   FLIP INDICATOR
+========================================================= */
 
 .flip-hint {
     position: absolute;
+
     left: 28px;
     bottom: 24px;
 
@@ -423,12 +491,16 @@
 
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: .12em;
     text-transform: uppercase;
+
+    pointer-events: none;
 }
 
 .flip-icon {
     font-size: 18px;
+
     transition: transform .3s ease;
 }
 
@@ -437,7 +509,9 @@
 }
 
 
-/* Keyboard accessibility */
+/* =========================================================
+   KEYBOARD ACCESSIBILITY
+========================================================= */
 
 .flip-card:focus-visible {
     outline: 2px solid var(--cyan);
@@ -445,14 +519,14 @@
 }
 
 
-/* Mobile */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 800px) {
 
-    .flip-card,
-    .flip-card-inner,
-    .flip-card-front,
-    .flip-card-back {
+    .flip-card {
+        height: 430px;
         min-height: 430px;
     }
 }
