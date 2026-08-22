@@ -317,6 +317,145 @@
                 border-color .25s ease;
         }
 
+        /* =========================================================
+   INTERACTIVE RESEARCH FLIP CARD
+========================================================= */
+
+.flip-card {
+    background: transparent;
+    min-height: 410px;
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 410px;
+
+    transition: transform 0.75s cubic-bezier(.2, .7, .2, 1);
+    transform-style: preserve-3d;
+}
+
+/* JavaScript adds this class when clicked */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 410px;
+
+    border: 1px solid #1a2d4b;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+/* FRONT */
+
+.flip-card-front {
+    background:
+        linear-gradient(
+            145deg,
+            #0c1529,
+            #080e1d
+        );
+
+    padding: 28px;
+}
+
+.flip-card-front .num {
+    font: 12px ui-monospace, monospace;
+    color: var(--cyan);
+}
+
+.flip-card-front h3 {
+    font-size: 22px;
+    margin: 35px 0 10px;
+}
+
+.flip-card-front p {
+    color: var(--muted);
+    margin: 0;
+}
+
+
+/* BACK */
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: #030713;
+    display: flex;
+    flex-direction: column;
+}
+
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Small flip indicator */
+
+.flip-hint {
+    position: absolute;
+    left: 28px;
+    bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--cyan);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.flip-icon {
+    font-size: 18px;
+    transition: transform .3s ease;
+}
+
+.flip-card:hover .flip-icon {
+    transform: rotate(180deg);
+}
+
+
+/* Keyboard accessibility */
+
+.flip-card:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 5px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .flip-card,
+    .flip-card-inner,
+    .flip-card-front,
+    .flip-card-back {
+        min-height: 430px;
+    }
+}
+
         .card:hover {
             transform: translateY(-4px);
             border-color: #365f8f;
@@ -994,23 +1133,60 @@
         <div class="grid">
 
 
-            <article class="card">
+            <article
+    class="flip-card"
+    tabindex="0"
+    role="button"
+    aria-label="Origins of the Universe. Click to reveal cosmology visualization."
+    aria-pressed="false"
+>
 
-                <span class="num">
-                    COSMOLOGY
-                </span>
+    <div class="flip-card-inner">
 
-                <h3>
-                    Origins of the Universe
-                </h3>
+        <!-- =========================
+             FRONT
+        ========================== -->
 
-                <p>
-                    Big Bang cosmology, cosmic inflation,
-                    nucleosynthesis, the cosmic microwave background,
-                    structure formation and cosmic evolution.
-                </p>
+        <div class="flip-card-front">
 
-            </article>
+            <span class="num">
+                COSMOLOGY
+            </span>
+
+            <h3>
+                Origins of the Universe
+            </h3>
+
+            <p>
+                Big Bang cosmology, cosmic inflation,
+                nucleosynthesis, the cosmic microwave background,
+                structure formation and cosmic evolution.
+            </p>
+
+            <div class="flip-hint">
+                <span class="flip-icon">↻</span>
+                Click to explore
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             BACK
+        ========================== -->
+
+        <div class="flip-card-back">
+
+            <img
+                src="cosmology-origins-universe.png"
+                alt="Visualization showing the evolution of the Universe from the Big Bang through cosmic inflation, the cosmic microwave background, structure formation and cosmic evolution"
+            >
+
+        </div>
+
+    </div>
+
+</article>
 
 
             <article class="card">
@@ -1359,6 +1535,33 @@
     </div>
 
 </footer>
+
+    <script>
+document.querySelectorAll(".flip-card").forEach((card) => {
+
+    function toggleCard() {
+
+        const flipped = card.classList.toggle("flipped");
+
+        card.setAttribute(
+            "aria-pressed",
+            flipped ? "true" : "false"
+        );
+    }
+
+    card.addEventListener("click", toggleCard);
+
+    card.addEventListener("keydown", (event) => {
+
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            toggleCard();
+        }
+
+    });
+
+});
+</script>
 
 
 </body>
