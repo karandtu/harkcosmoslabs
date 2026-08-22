@@ -83,14 +83,46 @@
         }
 
         .brand {
-            font-weight: 800;
-            letter-spacing: .13em;
-            font-size: 15px;
-        }
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    letter-spacing: .13em;
+    font-size: 15px;
+}
 
-        .brand span {
-            color: var(--cyan);
-        }
+.brand-logo {
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    flex-shrink: 0;
+
+    box-shadow:
+        0 0 12px rgba(98, 217, 255, .30),
+        0 0 28px rgba(98, 217, 255, .12);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.brand-logo:hover {
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 16px rgba(98, 217, 255, .45),
+        0 0 34px rgba(98, 217, 255, .20);
+}
+
+.brand-text {
+    white-space: nowrap;
+}
+
+.brand span {
+    color: var(--cyan);
+}
 
         .links {
             display: flex;
