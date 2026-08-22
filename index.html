@@ -15,6 +15,7 @@
     <link rel="canonical" href="https://www.harkcosmoslabs.com/">
 
     <style>
+
         :root {
             --bg: #050814;
             --panel: #0b1225;
@@ -36,6 +37,7 @@
 
         body {
             margin: 0;
+
             background:
                 radial-gradient(circle at 80% 5%, #18234c 0, transparent 28%),
                 var(--bg);
@@ -61,6 +63,7 @@
             margin: auto;
         }
 
+
         /* =========================================================
            NAVIGATION
         ========================================================= */
@@ -69,67 +72,76 @@
             position: sticky;
             top: 0;
             z-index: 20;
+
             background: #050814e8;
             backdrop-filter: blur(12px);
+
             border-bottom: 1px solid #ffffff12;
         }
 
         .nav {
             height: 82px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 24px;
         }
 
         .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-weight: 800;
-    letter-spacing: .13em;
-    font-size: 15px;
-}
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
-.brand-logo {
-    width: 54px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: block;
-    flex-shrink: 0;
+            font-weight: 800;
+            letter-spacing: .13em;
+            font-size: 15px;
+        }
 
-    box-shadow:
-        0 0 12px rgba(98, 217, 255, .30),
-        0 0 28px rgba(98, 217, 255, .12);
+        .brand-logo {
+            width: 54px;
+            height: 54px;
 
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-}
+            object-fit: cover;
+            border-radius: 50%;
 
-.brand-logo:hover {
-    transform: scale(1.06);
+            display: block;
+            flex-shrink: 0;
 
-    box-shadow:
-        0 0 16px rgba(98, 217, 255, .45),
-        0 0 34px rgba(98, 217, 255, .20);
-}
+            box-shadow:
+                0 0 12px rgba(98, 217, 255, .30),
+                0 0 28px rgba(98, 217, 255, .12);
 
-.brand-text {
-    white-space: nowrap;
-}
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+        }
 
-.brand span {
-    color: var(--cyan);
-}
+        .brand-logo:hover {
+            transform: scale(1.06);
+
+            box-shadow:
+                0 0 16px rgba(98, 217, 255, .45),
+                0 0 34px rgba(98, 217, 255, .20);
+        }
+
+        .brand-text {
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: var(--cyan);
+        }
 
         .links {
             display: flex;
             gap: 24px;
+
             color: #c6d2e8;
             font-size: 14px;
         }
+
 
         /* =========================================================
            HERO
@@ -137,142 +149,45 @@
 
         .hero {
             min-height: 780px;
+
             display: grid;
             align-items: center;
+
             position: relative;
             overflow: hidden;
         }
 
         /*
-           IMPORTANT:
-           multiverse research sample.png is located in the SAME
-           directory as index.html.
+           ORIGINAL PRE-ANDROMEDA HERO
         */
 
-        /* =========================================================
-   INTERACTIVE ANDROMEDA DEEP-ZOOM HERO
-========================================================= */
+        .hero::after {
+            content: "";
 
-.hero {
-    min-height: 780px;
-    position: relative;
-    overflow: hidden;
-    background: #02040a;
-    isolation: isolate;
-}
+            position: absolute;
+            inset: 0;
 
-/* OpenSeadragon galaxy canvas */
-#andromeda-viewer {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background: #02040a;
-}
+            background:
+                linear-gradient(
+                    90deg,
+                    #050814 7%,
+                    #050814e8 32%,
+                    #050814b5 52%,
+                    #05081445 80%
+                ),
+                url("hark-cosmos-multiverse-lab.png")
+                center right / cover no-repeat;
 
-/*
-   Dark overlay keeps the HARK COSMOS LABS text readable.
-
-   IMPORTANT:
-   pointer-events:none means the mouse can still interact
-   with Andromeda underneath.
-*/
-.hero-shade {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(5, 8, 20, .96) 0%,
-            rgba(5, 8, 20, .88) 25%,
-            rgba(5, 8, 20, .58) 48%,
-            rgba(5, 8, 20, .18) 72%,
-            rgba(5, 8, 20, .04) 100%
-        );
-
-    pointer-events: none;
-}
-
-/* Hero text sits above the galaxy */
-.hero-content {
-    position: relative;
-    z-index: 2;
-
-    min-height: 780px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    pointer-events: none;
-}
-
-/* Links/buttons must remain clickable */
-.hero-content a,
-.hero-content button {
-    pointer-events: auto;
-}
-
-/* Small instruction panel */
-.andromeda-controls-hint {
-    position: absolute;
-    right: 28px;
-    bottom: 28px;
-    z-index: 5;
-
-    padding: 10px 15px;
-
-    border: 1px solid rgba(98, 217, 255, .32);
-    border-radius: 999px;
-
-    background: rgba(3, 7, 19, .72);
-    backdrop-filter: blur(10px);
-
-    color: #c9eaff;
-
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-
-    pointer-events: none;
-}
-
-/* Make OpenSeadragon controls fit the site */
-.openseadragon-container {
-    background: #02040a !important;
-}
-
-@media (max-width: 800px) {
-
-    .hero,
-    .hero-content {
-        min-height: 700px;
-    }
-
-    .hero-shade {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(5, 8, 20, .92),
-                rgba(5, 8, 20, .55)
-            );
-    }
-
-    .andromeda-controls-hint {
-        right: 15px;
-        bottom: 15px;
-        font-size: 9px;
-    }
-}
+            z-index: -1;
+            opacity: .88;
+        }
 
         .eyebrow {
             color: var(--cyan);
+
             letter-spacing: .18em;
             text-transform: uppercase;
+
             font-size: 13px;
             font-weight: 700;
         }
@@ -280,41 +195,53 @@
         .hero h1 {
             font-size: clamp(50px, 7vw, 94px);
             line-height: .94;
+
             max-width: 900px;
+
             margin: 18px 0 26px;
+
             letter-spacing: -.055em;
         }
 
         .grad {
-            background: linear-gradient(
-                90deg,
-                var(--cyan),
-                #c8b8ff
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--cyan),
+                    #c8b8ff
+                );
 
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
         }
 
         .lead {
             font-size: 20px;
+
             color: #c7d4e9;
+
             max-width: 760px;
         }
 
         .buttons {
             display: flex;
             gap: 14px;
+
             margin-top: 34px;
+
             flex-wrap: wrap;
         }
 
         .btn {
             padding: 13px 19px;
+
             border: 1px solid #46688f;
             border-radius: 9px;
+
             font-weight: 700;
+
             transition:
                 transform .2s ease,
                 background .2s ease;
@@ -328,12 +255,14 @@
         .btn.primary {
             background: #eaf7ff;
             color: #06101f;
+
             border-color: #eaf7ff;
         }
 
         .btn.primary:hover {
             background: white;
         }
+
 
         /* =========================================================
            METRICS
@@ -342,12 +271,14 @@
         .metrics {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+
             border-top: 1px solid var(--line);
             border-bottom: 1px solid var(--line);
         }
 
         .metric {
             padding: 28px 20px;
+
             border-right: 1px solid var(--line);
         }
 
@@ -365,6 +296,7 @@
             font-size: 13px;
         }
 
+
         /* =========================================================
            GENERAL SECTIONS
         ========================================================= */
@@ -376,26 +308,33 @@
         .sectionhead {
             display: grid;
             grid-template-columns: .7fr 1.3fr;
+
             gap: 60px;
+
             margin-bottom: 45px;
         }
 
         .sectionhead h2 {
             font-size: clamp(36px, 5vw, 62px);
             line-height: 1;
+
             margin: 0;
+
             letter-spacing: -.04em;
         }
 
         .sectionhead p {
             color: var(--muted);
+
             font-size: 18px;
+
             margin: 0;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+
             gap: 16px;
         }
 
@@ -409,227 +348,15 @@
 
             border: 1px solid #1a2d4b;
             border-radius: 14px;
+
             padding: 28px;
+
             min-height: 235px;
 
             transition:
                 transform .25s ease,
                 border-color .25s ease;
         }
-
-/* =========================================================
-   INTERACTIVE RESEARCH FLIP CARD — STABLE TWO-WAY FLIP
-========================================================= */
-
-.flip-card {
-    position: relative;
-    background: transparent;
-    min-height: 410px;
-    height: 410px;
-
-    perspective: 1400px;
-    -webkit-perspective: 1400px;
-
-    cursor: pointer;
-    border-radius: 14px;
-}
-
-.flip-card-inner {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-
-    transition: transform 0.75s cubic-bezier(.2, .7, .2, 1);
-
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-
-    transform: rotateY(0deg);
-}
-
-/* CLICKED STATE */
-
-.flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-
-/* =========================================================
-   BOTH CARD FACES
-========================================================= */
-
-.flip-card-front,
-.flip-card-back {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    border: 1px solid #1a2d4b;
-    border-radius: 14px;
-
-    overflow: hidden;
-
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-
-    transform-style: preserve-3d;
-    -webkit-transform-style: preserve-3d;
-}
-
-
-/* =========================================================
-   FRONT SIDE
-========================================================= */
-
-.flip-card-front {
-    z-index: 2;
-
-    transform: rotateY(0deg);
-    -webkit-transform: rotateY(0deg);
-
-    background:
-        linear-gradient(
-            145deg,
-            #0c1529,
-            #080e1d
-        );
-
-    padding: 28px;
-}
-
-.flip-card-front .num {
-    font: 12px ui-monospace, monospace;
-    color: var(--cyan);
-}
-
-.flip-card-front h3 {
-    font-size: 22px;
-    margin: 35px 0 10px;
-}
-
-.flip-card-front p {
-    color: var(--muted);
-    margin: 0;
-}
-
-
-/* =========================================================
-   BACK SIDE
-========================================================= */
-
-.flip-card-back {
-    z-index: 1;
-
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
-
-    background: #030713;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* Back-side cosmology image */
-
-.flip-card-back img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-    object-position: center;
-
-    pointer-events: none;
-
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-
-/* =========================================================
-   FLIPPED FACE LAYER CONTROL
-========================================================= */
-
-/*
-   Explicitly switch the stacking order after the card flips.
-   This prevents the hidden back face from covering the front
-   after the card returns to its original position.
-*/
-
-.flip-card.flipped .flip-card-front {
-    z-index: 1;
-}
-
-.flip-card.flipped .flip-card-back {
-    z-index: 2;
-}
-
-
-/* =========================================================
-   FLIP INDICATOR
-========================================================= */
-
-.flip-hint {
-    position: absolute;
-
-    left: 28px;
-    bottom: 24px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    color: var(--cyan);
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: .12em;
-    text-transform: uppercase;
-
-    pointer-events: none;
-}
-
-.flip-icon {
-    font-size: 18px;
-
-    transition: transform .3s ease;
-}
-
-.flip-card:hover .flip-icon {
-    transform: rotate(180deg);
-}
-
-
-/* =========================================================
-   KEYBOARD ACCESSIBILITY
-========================================================= */
-
-.flip-card:focus-visible {
-    outline: 2px solid var(--cyan);
-    outline-offset: 5px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 800px) {
-
-    .flip-card {
-        height: 430px;
-        min-height: 430px;
-    }
-}
 
         .card:hover {
             transform: translateY(-4px);
@@ -638,18 +365,192 @@
 
         .card .num {
             font: 12px ui-monospace, monospace;
+
             color: var(--cyan);
         }
 
         .card h3 {
             font-size: 22px;
+
             margin: 35px 0 10px;
         }
 
         .card p {
             color: var(--muted);
+
             margin: 0;
         }
+
+
+        /* =========================================================
+           INTERACTIVE RESEARCH FLIP CARDS
+        ========================================================= */
+
+        .flip-card {
+            position: relative;
+
+            background: transparent;
+
+            min-height: 410px;
+            height: 410px;
+
+            perspective: 1400px;
+            -webkit-perspective: 1400px;
+
+            cursor: pointer;
+
+            border-radius: 14px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+
+            width: 100%;
+            height: 100%;
+
+            transition:
+                transform .75s cubic-bezier(.2, .7, .2, 1);
+
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+
+            transform: rotateY(0deg);
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: 1px solid #1a2d4b;
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+        }
+
+        .flip-card-front {
+            z-index: 2;
+
+            transform: rotateY(0deg);
+            -webkit-transform: rotateY(0deg);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0c1529,
+                    #080e1d
+                );
+
+            padding: 28px;
+        }
+
+        .flip-card-front .num {
+            font: 12px ui-monospace, monospace;
+
+            color: var(--cyan);
+        }
+
+        .flip-card-front h3 {
+            font-size: 22px;
+
+            margin: 35px 0 10px;
+        }
+
+        .flip-card-front p {
+            color: var(--muted);
+
+            margin: 0;
+        }
+
+        .flip-card-back {
+            z-index: 1;
+
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+
+            background: #030713;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flip-card-back img {
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+            object-position: center;
+
+            pointer-events: none;
+
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .flip-card.flipped .flip-card-front {
+            z-index: 1;
+        }
+
+        .flip-card.flipped .flip-card-back {
+            z-index: 2;
+        }
+
+        .flip-hint {
+            position: absolute;
+
+            left: 28px;
+            bottom: 24px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+
+            color: var(--cyan);
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: .12em;
+            text-transform: uppercase;
+
+            pointer-events: none;
+        }
+
+        .flip-icon {
+            font-size: 18px;
+
+            transition:
+                transform .3s ease;
+        }
+
+        .flip-card:hover .flip-icon {
+            transform: rotate(180deg);
+        }
+
+        .flip-card:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 5px;
+        }
+
 
         /* =========================================================
            COSMOS MISSION INTELLIGENCE PLATFORM
@@ -665,16 +566,19 @@
 
             border: 1px solid #25456e;
             border-radius: 20px;
+
             padding: 48px;
 
             display: grid;
             grid-template-columns: 1fr 1fr;
+
             gap: 50px;
         }
 
         .product h2 {
             font-size: 50px;
             line-height: 1;
+
             margin: 8px 0 20px;
         }
 
@@ -685,26 +589,36 @@
 
         .pipe {
             padding: 12px 15px;
+
             background: #07101f;
+
             border: 1px solid #1c365a;
             border-radius: 8px;
+
             color: #cbd9ee;
         }
 
         .chips {
             display: flex;
             flex-wrap: wrap;
+
             gap: 10px;
+
             margin-top: 25px;
         }
 
         .chip {
             border: 1px solid #294a71;
+
             padding: 8px 12px;
+
             border-radius: 999px;
+
             color: #bdd0ea;
+
             font-size: 13px;
         }
+
 
         /* =========================================================
            RESEARCH
@@ -714,15 +628,9 @@
             background: #070b17;
         }
 
-        /*
-           MULTIVERSE FEATURE
-
-           This displays the same image as an actual image instead
-           of only using it as a background.
-        */
-
         .multiverse-showcase {
             margin: 0 0 55px;
+
             overflow: hidden;
 
             background:
@@ -738,14 +646,18 @@
 
         .multiverse-image {
             position: relative;
+
             background: #050814;
         }
 
         .multiverse-image img {
             display: block;
+
             width: 100%;
             height: auto;
+
             max-height: 680px;
+
             object-fit: cover;
         }
 
@@ -755,25 +667,35 @@
 
         .multiverse-content h3 {
             font-size: clamp(30px, 4vw, 50px);
+
             line-height: 1.08;
             letter-spacing: -.03em;
+
             margin: 10px 0 18px;
         }
 
         .multiverse-content p {
             max-width: 920px;
+
             color: var(--muted);
+
             font-size: 17px;
+
             margin: 0;
         }
 
         .principle {
             border-left: 3px solid var(--violet);
+
             padding: 18px 24px;
+
             background: #0c1020;
+
             color: #c9d5e8;
+
             margin-top: 35px;
         }
+
 
         /* =========================================================
            CTA
@@ -781,15 +703,19 @@
 
         .cta {
             text-align: center;
+
             padding: 120px 0;
         }
 
         .cta h2 {
             font-size: clamp(42px, 6vw, 76px);
             line-height: 1;
+
             margin: 0 auto 25px;
+
             max-width: 900px;
         }
+
 
         /* =========================================================
            FOOTER
@@ -797,17 +723,23 @@
 
         footer {
             border-top: 1px solid var(--line);
+
             padding: 35px 0 55px;
+
             color: #8396b5;
+
             font-size: 13px;
         }
 
         .foot {
             display: flex;
             justify-content: space-between;
+
             gap: 25px;
+
             flex-wrap: wrap;
         }
+
 
         /* =========================================================
            MOBILE
@@ -846,44 +778,60 @@
             .multiverse-content {
                 padding: 25px;
             }
+
+            .flip-card {
+                height: 430px;
+                min-height: 430px;
+            }
         }
 
     </style>
+
 </head>
 
 
 <body>
+
 
 <!-- =============================================================
      NAVIGATION
 ============================================================= -->
 
 <nav>
+
     <div class="wrap nav">
 
         <a class="brand" href="#top">
 
-    <img
-        src="hark-cosmos-labs-logo.png"
-        alt="HARK COSMOS LABS"
-        class="brand-logo"
-    >
+            <img
+                src="hark-cosmos-labs-logo.png"
+                alt="HARK COSMOS LABS"
+                class="brand-logo"
+            >
 
-    <div class="brand-text">
-        HARK <span>COSMOS</span> LABS
-    </div>
+            <div class="brand-text">
+                HARK <span>COSMOS</span> LABS
+            </div>
 
-</a>
+        </a>
+
 
         <div class="links">
+
             <a href="#mission">Mission</a>
+
             <a href="#systems">Systems</a>
+
             <a href="#mip">COSMOS MIP</a>
+
             <a href="#research">Research</a>
+
             <a href="#vision">Vision</a>
+
         </div>
 
     </div>
+
 </nav>
 
 
@@ -891,34 +839,16 @@
      HERO
 ============================================================= -->
 
-<!-- =============================================================
-     INTERACTIVE ANDROMEDA DEEP-ZOOM HERO
-============================================================= -->
-
 <header class="hero" id="top">
 
-    <!--
-        OpenSeadragon renders the gigantic Andromeda
-        deep-zoom image inside this element.
-    -->
-    <div
-        id="andromeda-viewer"
-        aria-label="Interactive deep zoom view of the Andromeda Galaxy"
-    ></div>
-
-
-    <!-- Readability gradient -->
-    <div class="hero-shade"></div>
-
-
-    <!-- Existing HARK COSMOS LABS hero content -->
-    <div class="wrap hero-content">
+    <div class="wrap">
 
         <div class="eyebrow">
             Space Intelligence · Fundamental Research · Advanced Computing
         </div>
 
         <h1>
+
             Understand the Cosmos.<br>
 
             <span class="grad">
@@ -928,14 +858,19 @@
             <br>
 
             Advance Civilization.
+
         </h1>
 
+
         <p class="lead">
+
             HARK COSMOS LABS is building toward a future where
             artificial intelligence, advanced computing and rigorous
             science accelerate space exploration and deepen humanity's
             understanding of the Universe.
+
         </p>
+
 
         <div class="buttons">
 
@@ -950,11 +885,6 @@
         </div>
 
     </div>
-
-
-    <div class="andromeda-controls-hint">
-    Drag to Explore · Double Click to Zoom · Pinch to Zoom
-</div>
 
 </header>
 
@@ -998,9 +928,12 @@
 
         <div class="sectionhead">
 
-            <h2>Our Mission</h2>
+            <h2>
+                Our Mission
+            </h2>
 
             <p>
+
                 To advance humanity's understanding and exploration of
                 the Universe through the convergence of astronomy,
                 astrophysics, cosmology, mathematics, artificial
@@ -1008,12 +941,14 @@
                 intelligent technologies for space missions,
                 astronomical discovery and the long-term advancement
                 of a spacefaring civilization.
+
             </p>
 
         </div>
 
 
         <div class="grid">
+
 
             <article class="card">
 
@@ -1071,6 +1006,7 @@
 
             </article>
 
+
         </div>
 
     </div>
@@ -1093,16 +1029,19 @@
             </h2>
 
             <p>
+
                 Our commercial technology direction starts with software:
                 high-reliability distributed systems, real-time data,
                 AI-assisted operations and scientific computing for the
                 growing space economy.
+
             </p>
 
         </div>
 
 
         <div class="grid">
+
 
             <article class="card">
 
@@ -1160,6 +1099,7 @@
 
             </article>
 
+
         </div>
 
     </div>
@@ -1188,9 +1128,11 @@
                 </h2>
 
                 <p class="lead">
+
                     An AI-native mission intelligence platform envisioned
                     to transform spacecraft and mission data into timely,
                     explainable operational insight.
+
                 </p>
 
 
@@ -1268,6 +1210,7 @@
 
     <div class="wrap">
 
+
         <div class="sectionhead">
 
             <h2>
@@ -1275,10 +1218,12 @@
             </h2>
 
             <p>
+
                 Our long-horizon research vision spans observational
                 astronomy, theoretical astrophysics, cosmology,
                 mathematical physics and the search for life and
                 intelligence beyond Earth.
+
             </p>
 
         </div>
@@ -1311,6 +1256,7 @@
                 </h3>
 
                 <p>
+
                     HARK COSMOS LABS explores theoretical questions
                     involving cosmic inflation, bubble universes,
                     quantum cosmology, possible multiverse structures
@@ -1318,6 +1264,7 @@
                     models. These concepts are investigated as
                     theoretical possibilities rather than established
                     observational discoveries.
+
                 </p>
 
             </div>
@@ -1326,536 +1273,463 @@
 
 
         <!-- =====================================================
-             RESEARCH DOMAINS
+             RESEARCH FLIP CARDS
         ====================================================== -->
 
         <div class="grid">
 
 
-            <article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Origins of the Universe. Click to reveal cosmology visualization."
-    aria-pressed="false"
->
-
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                COSMOLOGY
-            </span>
-
-            <h3>
-                Origins of the Universe
-            </h3>
-
-            <p>
-                Big Bang cosmology, cosmic inflation,
-                nucleosynthesis, the cosmic microwave background,
-                structure formation and cosmic evolution.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             BACK
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="cosmology-origins-universe.png"
-                alt="Origins of the Universe — Big Bang, cosmic inflation, cosmic microwave background, structure formation and cosmic evolution"
-            >
-
-        </div>
-
-    </div>
-
-</article>
-
-
-            <!-- =====================================================
-     GRAVITY — BLACK HOLES FLIP CARD
-====================================================== -->
-
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Black Holes. Click to reveal gravity and black hole visualization."
-    aria-pressed="false"
->
-
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                GRAVITY
-            </span>
-
-            <h3>
-                Black Holes
-            </h3>
-
-            <p>
-                Stellar, intermediate and supermassive black holes;
-                horizons, accretion, relativistic jets, Hawking
-                radiation and the information problem.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             BACK
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="gravity-black-holes.png"
-                alt="Black holes — event horizon, accretion disk, relativistic jets, spacetime curvature, Hawking radiation and black hole classifications"
-            >
-
-        </div>
-
-    </div>
-
-</article>
-
+            <!-- COSMOLOGY -->
 
             <article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Stars, Nebulae, Gas and Dust. Click to reveal stellar astronomy visualization."
-    aria-pressed="false"
->
-
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT — STELLAR
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                STELLAR
-            </span>
-
-            <h3>
-                Stars, Nebulae, Gas & Dust
-            </h3>
-
-            <p>
-                Molecular clouds, stellar birth and evolution,
-                emission, reflection and dark nebulae, supernova
-                remnants and the interstellar medium.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             BACK — STELLAR
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="stellar-stars-nebulae-gas-dust.png"
-                alt="Stars, Nebulae, Gas and Dust — molecular clouds, stellar birth, stars, emission nebulae, reflection nebulae, dark nebulae, supernova remnants and the interstellar medium"
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Origins of the Universe. Click to reveal cosmology visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            COSMOLOGY
+                        </span>
 
+                        <h3>
+                            Origins of the Universe
+                        </h3>
+
+                        <p>
+                            Big Bang cosmology, cosmic inflation,
+                            nucleosynthesis, the cosmic microwave background,
+                            structure formation and cosmic evolution.
+                        </p>
+
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
+
+                    </div>
+
+
+                    <div class="flip-card-back">
+
+                        <img
+                            src="cosmology-origins-universe.png"
+                            alt="Origins of the Universe visualization"
+                        >
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- GRAVITY -->
 
             <article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Galaxies Beyond the Milky Way. Click to reveal extragalactic astronomy visualization."
-    aria-pressed="false"
->
-
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT — EXTRAGALACTIC
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                EXTRAGALACTIC
-            </span>
-
-            <h3>
-                Galaxies Beyond the Milky Way
-            </h3>
-
-            <p>
-                Galaxy formation and evolution, gas and dust,
-                active galactic nuclei, quasars, mergers, clusters
-                and large-scale structure.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             BACK — EXTRAGALACTIC
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="extragalactic-galaxies-beyond-milky-way.png"
-                alt="Galaxies Beyond the Milky Way — galaxy types, galaxy formation and evolution, active galactic nuclei, quasars, mergers, galaxy clusters and large-scale cosmic structure"
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Black Holes. Click to reveal gravity visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            GRAVITY
+                        </span>
 
+                        <h3>
+                            Black Holes
+                        </h3>
+
+                        <p>
+                            Stellar, intermediate and supermassive black holes;
+                            horizons, accretion, relativistic jets, Hawking
+                            radiation and the information problem.
+                        </p>
+
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
+
+                    </div>
+
+
+                    <div class="flip-card-back">
+
+                        <img
+                            src="gravity-black-holes.png"
+                            alt="Black holes visualization"
+                        >
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- STELLAR -->
 
             <article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Exoplanets and Planetary Systems. Click to reveal planetary science visualization."
-    aria-pressed="false"
->
-
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT — PLANETARY
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                PLANETARY
-            </span>
-
-            <h3>
-                Exoplanets & Planetary Systems
-            </h3>
-
-            <p>
-                Planet formation, protoplanetary disks, orbital
-                systems, atmospheric characterization, habitability
-                and planetary evolution.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
-
-
-        <!-- =========================
-             BACK — PLANETARY
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="exoplanets-planetary-systems.png"
-                alt="Exoplanets and Planetary Systems — planet formation, protoplanetary disks, orbital architectures, exoplanet detection, atmospheric characterization and habitable zones"
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Stars, Nebulae, Gas and Dust. Click to reveal stellar visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            STELLAR
+                        </span>
 
+                        <h3>
+                            Stars, Nebulae, Gas & Dust
+                        </h3>
 
-            <!-- =====================================================
-     RADIATIVE — MULTI-WAVELENGTH ASTRONOMY FLIP CARD
-====================================================== -->
+                        <p>
+                            Molecular clouds, stellar birth and evolution,
+                            emission, reflection and dark nebulae, supernova
+                            remnants and the interstellar medium.
+                        </p>
 
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Multi-Wavelength Astronomy. Click to reveal radiative astronomy visualization."
-    aria-pressed="false"
->
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
 
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT — RADIATIVE
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                RADIATIVE
-            </span>
-
-            <h3>
-                Multi-Wavelength Astronomy
-            </h3>
-
-            <p>
-                Radio through gamma-ray astronomy, spectroscopy and
-                multimessenger approaches combining photons,
-                gravitational waves and neutrinos.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
+                    </div>
 
 
-        <!-- =========================
-             BACK — RADIATIVE
-        ========================== -->
+                    <div class="flip-card-back">
 
-        <div class="flip-card-back">
+                        <img
+                            src="stellar-stars-nebulae-gas-dust.png"
+                            alt="Stars, nebulae, gas and dust visualization"
+                        >
 
-            <img
-                src="radiative-multiwavelength-astronomy.png"
-                alt="Multi-Wavelength Astronomy — radio, microwave, infrared, visible, ultraviolet, X-ray and gamma-ray astronomy, spectroscopy and multimessenger astronomy"
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- EXTRAGALACTIC -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Galaxies Beyond the Milky Way. Click to reveal extragalactic visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            EXTRAGALACTIC
+                        </span>
 
+                        <h3>
+                            Galaxies Beyond the Milky Way
+                        </h3>
 
-            <!-- =====================================================
-     ASTROBIOLOGY — LIFE & TECHNOSIGNATURES
-====================================================== -->
+                        <p>
+                            Galaxy formation and evolution, gas and dust,
+                            active galactic nuclei, quasars, mergers, clusters
+                            and large-scale structure.
+                        </p>
 
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Life and Technosignatures. Click to reveal astrobiology visualization."
-    aria-pressed="false"
->
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
 
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                ASTROBIOLOGY
-            </span>
-
-            <h3>
-                Life &amp; Technosignatures
-            </h3>
-
-            <p>
-                Evidence-driven searches for biosignatures and
-                technosignatures, alongside rigorous study of the
-                Fermi paradox and SETI questions.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
+                    </div>
 
 
-        <!-- =========================
-             BACK
-        ========================== -->
+                    <div class="flip-card-back">
 
-        <div class="flip-card-back">
+                        <img
+                            src="extragalactic-galaxies-beyond-milky-way.png"
+                            alt="Galaxies beyond the Milky Way visualization"
+                        >
 
-            <img
-                src="astrobiology-life-technosignatures.png"
-                alt="Astrobiology visualization exploring life, biosignatures, habitable worlds, technosignatures, SETI and the search for intelligence beyond Earth"
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PLANETARY -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Exoplanets and Planetary Systems. Click to reveal planetary visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            PLANETARY
+                        </span>
 
+                        <h3>
+                            Exoplanets & Planetary Systems
+                        </h3>
 
-            <!-- =====================================================
-     FOUNDATIONS — MULTIVERSE & QUANTUM COSMOLOGY
-====================================================== -->
+                        <p>
+                            Planet formation, protoplanetary disks, orbital
+                            systems, atmospheric characterization, habitability
+                            and planetary evolution.
+                        </p>
 
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Multiverse and Quantum Cosmology. Click to reveal foundations visualization."
-    aria-pressed="false"
->
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
 
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                FOUNDATIONS
-            </span>
-
-            <h3>
-                Multiverse &amp; Quantum Cosmology
-            </h3>
-
-            <p>
-                Theoretical study of eternal inflation, bubble
-                universes, many-worlds, the string landscape and
-                mathematical models of possible cosmological
-                structures.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
+                    </div>
 
 
-        <!-- =========================
-             BACK
-        ========================== -->
+                    <div class="flip-card-back">
 
-        <div class="flip-card-back">
+                        <img
+                            src="exoplanets-planetary-systems.png"
+                            alt="Exoplanets and planetary systems visualization"
+                        >
 
-            <img
-                src="foundations-multiverse-quantum-cosmology.png"
-                alt="Multiverse and Quantum Cosmology visualization exploring inflationary multiverse models, quantum cosmology, many-worlds, string theory landscape and possible cosmic structures"
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- RADIATIVE -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Multi-Wavelength Astronomy. Click to reveal radiative astronomy visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            RADIATIVE
+                        </span>
 
+                        <h3>
+                            Multi-Wavelength Astronomy
+                        </h3>
 
-            <!-- =====================================================
-     MATHEMATICS — MATHEMATICAL FOUNDATIONS
-====================================================== -->
+                        <p>
+                            Radio through gamma-ray astronomy, spectroscopy and
+                            multimessenger approaches combining photons,
+                            gravitational waves and neutrinos.
+                        </p>
 
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Mathematical Foundations. Click to reveal mathematics visualization."
-    aria-pressed="false"
->
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
 
-    <div class="flip-card-inner">
-
-        <!-- =========================
-             FRONT
-        ========================== -->
-
-        <div class="flip-card-front">
-
-            <span class="num">
-                MATHEMATICS
-            </span>
-
-            <h3>
-                Mathematical Foundations
-            </h3>
-
-            <p>
-                Algebra, geometry, trigonometry, calculus,
-                differential equations, numerical methods and
-                mathematical physics—from classical mechanics
-                to relativity.
-            </p>
-
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
-            </div>
-
-        </div>
+                    </div>
 
 
-        <!-- =========================
-             BACK
-        ========================== -->
+                    <div class="flip-card-back">
 
-        <div class="flip-card-back">
+                        <img
+                            src="radiative-multi-wavelength-astronomy.png"
+                            alt="Multi-wavelength astronomy visualization"
+                        >
 
-            <img
-                src="mathematics-mathematical-foundations.png"
-                alt="Mathematical Foundations visualization exploring algebra, geometry, calculus, analysis, probability, logic, number theory, dynamics and mathematical physics"
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ASTROBIOLOGY -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Life and Technosignatures. Click to reveal astrobiology visualization."
+                aria-pressed="false"
             >
 
-        </div>
+                <div class="flip-card-inner">
 
-    </div>
+                    <div class="flip-card-front">
 
-</article>
+                        <span class="num">
+                            ASTROBIOLOGY
+                        </span>
+
+                        <h3>
+                            Life & Technosignatures
+                        </h3>
+
+                        <p>
+                            Evidence-driven searches for biosignatures and
+                            technosignatures, alongside rigorous study of the
+                            Fermi paradox and SETI questions.
+                        </p>
+
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
+
+                    </div>
+
+
+                    <div class="flip-card-back">
+
+                        <img
+                            src="astrobiology-life-technosignatures.png"
+                            alt="Astrobiology, life and technosignatures visualization"
+                        >
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- FOUNDATIONS -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Multiverse and Quantum Cosmology. Click to reveal foundations visualization."
+                aria-pressed="false"
+            >
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <span class="num">
+                            FOUNDATIONS
+                        </span>
+
+                        <h3>
+                            Multiverse & Quantum Cosmology
+                        </h3>
+
+                        <p>
+                            Theoretical study of eternal inflation, bubble
+                            universes, many-worlds, the string landscape and
+                            mathematical models of possible cosmological
+                            structures.
+                        </p>
+
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
+
+                    </div>
+
+
+                    <div class="flip-card-back">
+
+                        <img
+                            src="foundations-multiverse-quantum-cosmology.png"
+                            alt="Multiverse and quantum cosmology visualization"
+                        >
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- MATHEMATICS -->
+
+            <article
+                class="flip-card"
+                tabindex="0"
+                role="button"
+                aria-label="Mathematical Foundations. Click to reveal mathematics visualization."
+                aria-pressed="false"
+            >
+
+                <div class="flip-card-inner">
+
+                    <div class="flip-card-front">
+
+                        <span class="num">
+                            MATHEMATICS
+                        </span>
+
+                        <h3>
+                            Mathematical Foundations
+                        </h3>
+
+                        <p>
+                            Algebra, geometry, trigonometry, calculus,
+                            differential equations, numerical methods and
+                            mathematical physics—from classical mechanics
+                            to relativity.
+                        </p>
+
+                        <div class="flip-hint">
+                            <span class="flip-icon">↻</span>
+                            Click to explore
+                        </div>
+
+                    </div>
+
+
+                    <div class="flip-card-back">
+
+                        <img
+                            src="mathematics-mathematical-foundations.png"
+                            alt="Mathematical foundations visualization"
+                        >
+
+                    </div>
+
+                </div>
+
+            </article>
+
 
         </div>
 
@@ -1892,18 +1766,21 @@
             </h2>
 
             <p>
+
                 Beyond near-term space software, we are interested in
                 the long arc of technological civilization: the Fermi
                 paradox, SETI, technosignatures, artificial
                 intelligence, planetary resilience and the Kardashev
                 framework for thinking about civilization-scale
                 energy and capability.
+
             </p>
 
         </div>
 
 
         <div class="grid">
+
 
             <article class="card">
 
@@ -1961,6 +1838,7 @@
 
             </article>
 
+
         </div>
 
     </div>
@@ -1981,18 +1859,23 @@
         </div>
 
         <h2>
+
             From intelligent space systems to the deepest questions
             in cosmology.
+
         </h2>
 
         <p
             class="lead"
             style="margin:auto"
         >
+
             A long-term research and technology vision at the
             intersection of space, science, mathematics and
             computation.
+
         </p>
+
 
         <div
             class="buttons"
@@ -2051,136 +1934,9 @@
 
 </footer>
 
-    <!-- =============================================================
-     OPEN SEADRAGON
-============================================================= -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/openseadragon.min.js"></script>
-
-
-<script>
-
-const andromedaViewer = OpenSeadragon({
-
-    id: "andromeda-viewer",
-
-    prefixUrl:
-        "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/5.0.1/images/",
-
-    /*
-       IMPORTANT:
-       These files must actually exist on your website:
-
-       /andromeda/andromeda.dzi
-       /andromeda/andromeda_files/
-    */
-    tileSources: "andromeda/andromeda.dzi",
-
-    /* =============================================
-       NAVIGATOR
-    ============================================= */
-
-    showNavigator: true,
-    navigatorPosition: "BOTTOM_RIGHT",
-    navigatorSizeRatio: 0.14,
-
-    /* =============================================
-       CONTROLS
-    ============================================= */
-
-    showNavigationControl: true,
-    showZoomControl: true,
-    showHomeControl: true,
-    showFullPageControl: true,
-
-    /* =============================================
-       MOUSE
-
-       Mouse wheel remains available for normal
-       webpage scrolling.
-
-       Drag = travel through Andromeda
-       Double click = zoom
-    ============================================= */
-
-    gestureSettingsMouse: {
-        scrollToZoom: false,
-        clickToZoom: false,
-        dblClickToZoom: true,
-        dragToPan: true
-    },
-
-    /* =============================================
-       TOUCH / MOBILE
-    ============================================= */
-
-    gestureSettingsTouch: {
-        pinchToZoom: true,
-        dragToPan: true,
-        dblClickToZoom: true
-    },
-
-    /* =============================================
-       ZOOM BEHAVIOR
-    ============================================= */
-
-    animationTime: 1.2,
-    springStiffness: 7,
-
-    zoomPerClick: 2,
-
-    maxZoomPixelRatio: 4,
-    minZoomImageRatio: 0.8,
-
-    visibilityRatio: 0.5,
-    constrainDuringPan: true,
-
-    /* =============================================
-       TILE PERFORMANCE
-    ============================================= */
-
-    blendTime: 0.15,
-
-    maxImageCacheCount: 500,
-    imageLoaderLimit: 8
-});
-
-
-/* =============================================
-   WHEN ANDROMEDA SUCCESSFULLY LOADS
-============================================= */
-
-andromedaViewer.addHandler("open", function () {
-
-    console.log("HARK COSMOS LABS: Andromeda Deep Zoom loaded.");
-
-    andromedaViewer.viewport.goHome(false);
-
-});
-
-
-/* =============================================
-   ERROR REPORTING
-============================================= */
-
-andromedaViewer.addHandler("open-failed", function (event) {
-
-    console.error(
-        "HARK COSMOS LABS: Unable to load Andromeda Deep Zoom.",
-        event
-    );
-
-});
-
-</script>
-
 
 <!-- =============================================================
-     RESEARCH FLIP CARDS
-============================================================= -->
-
-<!-- =============================================================
-     RESEARCH FLIP CARDS
+     FLIP CARD JAVASCRIPT
 ============================================================= -->
 
 <script>
@@ -2189,7 +1945,8 @@ document.querySelectorAll(".flip-card").forEach((card) => {
 
     function toggleCard() {
 
-        const flipped = card.classList.toggle("flipped");
+        const flipped =
+            card.classList.toggle("flipped");
 
         card.setAttribute(
             "aria-pressed",
@@ -2197,26 +1954,35 @@ document.querySelectorAll(".flip-card").forEach((card) => {
         );
     }
 
-    card.addEventListener("click", toggleCard);
 
-    card.addEventListener("keydown", (event) => {
+    card.addEventListener(
+        "click",
+        toggleCard
+    );
 
-        if (event.key === "Enter" || event.key === " ") {
 
-            event.preventDefault();
+    card.addEventListener(
+        "keydown",
+        (event) => {
 
-            toggleCard();
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                toggleCard();
+            }
+
         }
-
-    });
+    );
 
 });
 
 </script>
 
-</body>
-</html>
-
 
 </body>
+
 </html>
