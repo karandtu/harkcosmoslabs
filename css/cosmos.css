@@ -1,1 +1,1689 @@
-/* HARK COSMOS LABS — Cosmic Design System */
+/* ================================================================
+   HARK COSMOS LABS
+   COSMIC DESIGN SYSTEM
+   Civilization • Cosmos • Intelligence
+================================================================ */
+
+:root {
+    --space-black: #010207;
+    --deep-space: #030711;
+    --space-navy: #06101f;
+    --panel: rgba(7, 16, 31, 0.72);
+    --panel-solid: #07101f;
+
+    --stellar-white: #f4f8ff;
+    --text-primary: #eef5ff;
+    --text-secondary: #aabbd2;
+    --text-muted: #71839e;
+
+    --spectral-blue: #78c8ff;
+    --ion-blue: #3b82f6;
+    --plasma-cyan: #63e8ff;
+    --civilization-gold: #e9ca7a;
+
+    --line: rgba(120, 200, 255, 0.16);
+    --line-bright: rgba(120, 200, 255, 0.35);
+    --glass: rgba(4, 10, 22, 0.72);
+
+    --max-width: 1240px;
+
+    --font-main:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    --font-data:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+}
+
+
+/* ================================================================
+   RESET
+================================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background: var(--space-black);
+}
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 75% 10%,
+            rgba(31, 72, 145, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(20, 65, 120, 0.08),
+            transparent 35%
+        ),
+        var(--space-black);
+
+    color: var(--text-primary);
+
+    font-family: var(--font-main);
+    font-size: 16px;
+    line-height: 1.65;
+
+    overflow-x: hidden;
+}
+
+body::selection {
+    background: var(--spectral-blue);
+    color: var(--space-black);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+/* ================================================================
+   GLOBAL COSMIC CANVAS
+================================================================ */
+
+#cosmic-starfield {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: -10;
+
+    opacity: 0.85;
+}
+
+
+/* ================================================================
+   LAYOUT
+================================================================ */
+
+.cosmos-wrap {
+    width: min(
+        var(--max-width),
+        calc(100% - 48px)
+    );
+
+    margin-inline: auto;
+
+    position: relative;
+}
+
+.cosmos-section {
+    position: relative;
+
+    padding:
+        clamp(90px, 11vw, 160px)
+        0;
+
+    overflow: hidden;
+}
+
+.cosmos-section + .cosmos-section {
+    border-top:
+        1px solid
+        rgba(120, 200, 255, 0.06);
+}
+
+
+/* ================================================================
+   TYPOGRAPHY
+================================================================ */
+
+.cosmos-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--spectral-blue);
+
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.cosmos-eyebrow::before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    background: var(--spectral-blue);
+
+    box-shadow:
+        0 0 10px
+        rgba(120, 200, 255, 0.7);
+}
+
+.cosmos-title {
+    margin:
+        18px 0
+        24px;
+
+    max-width: 1050px;
+
+    font-size:
+        clamp(44px, 7vw, 96px);
+
+    line-height: 0.97;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 760;
+}
+
+.cosmos-title-medium {
+    margin:
+        14px 0
+        24px;
+
+    font-size:
+        clamp(38px, 5vw, 68px);
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+}
+
+.cosmos-gradient {
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            var(--spectral-blue) 45%,
+            var(--plasma-cyan) 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.cosmos-lead {
+    max-width: 760px;
+
+    color: var(--text-secondary);
+
+    font-size:
+        clamp(18px, 2vw, 22px);
+
+    line-height: 1.65;
+}
+
+.data-label {
+    color: var(--text-muted);
+
+    font-family: var(--font-data);
+    font-size: 10px;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   MISSION CONTROL NAVIGATION
+================================================================ */
+
+.mission-nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 100;
+
+    border-bottom:
+        1px solid
+        rgba(120, 200, 255, 0.12);
+
+    background:
+        rgba(1, 4, 10, 0.76);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.mission-nav-inner {
+    width: min(
+        var(--max-width),
+        calc(100% - 48px)
+    );
+
+    height: 78px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.mission-brand {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: max-content;
+}
+
+.mission-brand img {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    box-shadow:
+        0 0 18px
+        rgba(99, 232, 255, 0.18);
+}
+
+.mission-brand-name {
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+.mission-brand-name span {
+    color: var(--spectral-blue);
+}
+
+.mission-links {
+    display: flex;
+    align-items: center;
+
+    gap: 26px;
+}
+
+.mission-links a {
+    position: relative;
+
+    color: #aabbd2;
+
+    font-family: var(--font-data);
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    transition:
+        color 0.25s ease;
+}
+
+.mission-links a:hover {
+    color: white;
+}
+
+.mission-links a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -9px;
+
+    width: 0;
+    height: 1px;
+
+    background:
+        var(--plasma-cyan);
+
+    box-shadow:
+        0 0 8px
+        var(--plasma-cyan);
+
+    transition:
+        width 0.25s ease;
+}
+
+.mission-links a:hover::after {
+    width: 100%;
+}
+
+.system-online {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #a9ffd0;
+
+    font-family: var(--font-data);
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.system-online::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #69f0ae;
+
+    box-shadow:
+        0 0 9px
+        #69f0ae;
+}
+
+
+/* ================================================================
+   CINEMATIC HERO
+================================================================ */
+
+.cosmic-hero {
+    position: relative;
+
+    min-height: 100svh;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        130px 0
+        80px;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+.cosmic-hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -4;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(1, 2, 7, 0.98) 0%,
+            rgba(1, 2, 7, 0.86) 35%,
+            rgba(1, 2, 7, 0.36) 68%,
+            rgba(1, 2, 7, 0.15) 100%
+        ),
+        url("../hark-cosmos-labs-omniverse-hero.png")
+        center right /
+        cover
+        no-repeat;
+
+    opacity: 0.9;
+
+    transform: scale(1.02);
+}
+
+.cosmic-hero::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 72% 47%,
+            rgba(93, 181, 255, 0.12),
+            transparent 18%
+        ),
+        linear-gradient(
+            to bottom,
+            transparent 70%,
+            var(--space-black)
+        );
+}
+
+.hero-content {
+    max-width: 980px;
+}
+
+.hero-classification {
+    margin-bottom: 26px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    color: var(--text-muted);
+
+    font-family: var(--font-data);
+    font-size: 10px;
+
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+.hero-classification strong {
+    color: var(--spectral-blue);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 38px;
+}
+
+
+/* ================================================================
+   BUTTONS
+================================================================ */
+
+.cosmos-button {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 50px;
+
+    padding:
+        0 21px;
+
+    border:
+        1px solid
+        var(--line-bright);
+
+    border-radius: 4px;
+
+    color: var(--stellar-white);
+
+    background:
+        rgba(7, 16, 31, 0.4);
+
+    font-family: var(--font-data);
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.cosmos-button:hover {
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--spectral-blue);
+
+    background:
+        rgba(70, 160, 220, 0.08);
+
+    box-shadow:
+        0 0 24px
+        rgba(99, 232, 255, 0.08);
+}
+
+.cosmos-button.primary {
+    background:
+        var(--stellar-white);
+
+    border-color:
+        var(--stellar-white);
+
+    color:
+        var(--space-black);
+}
+
+
+/* ================================================================
+   SECTION HEADER
+================================================================ */
+
+.cosmos-section-header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(280px, 0.85fr)
+        minmax(320px, 1.15fr);
+
+    gap: clamp(40px, 8vw, 110px);
+
+    align-items: start;
+
+    margin-bottom: 60px;
+}
+
+.cosmos-section-header h2 {
+    margin: 0;
+
+    font-size:
+        clamp(38px, 5vw, 68px);
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+}
+
+.cosmos-section-header p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+    max-width: 720px;
+}
+
+
+/* ================================================================
+   THREE PILLARS
+================================================================ */
+
+.pillar-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--line);
+}
+
+.pillar {
+    min-height: 390px;
+
+    padding:
+        38px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(7, 16, 31, 0.96),
+            rgba(2, 6, 14, 0.98)
+        );
+
+    overflow: hidden;
+
+    transition:
+        background 0.35s ease;
+}
+
+.pillar:hover {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(10, 27, 48, 0.98),
+            rgba(2, 7, 16, 1)
+        );
+}
+
+.pillar-number {
+    color: var(--spectral-blue);
+
+    font-family: var(--font-data);
+    font-size: 10px;
+
+    letter-spacing: 0.14em;
+}
+
+.pillar h3 {
+    margin:
+        110px 0
+        14px;
+
+    font-size:
+        clamp(28px, 3vw, 42px);
+
+    letter-spacing: -0.035em;
+}
+
+.pillar p {
+    color:
+        var(--text-secondary);
+
+    margin: 0;
+}
+
+
+/* ================================================================
+   COSMOS MIP
+================================================================ */
+
+.mip-shell {
+    border:
+        1px solid
+        rgba(120, 200, 255, 0.22);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(8, 22, 42, 0.92),
+            rgba(3, 8, 18, 0.96)
+        );
+
+    box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+}
+
+.mip-header {
+    min-height: 46px;
+
+    padding:
+        0 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(3, 8, 18, 0.9);
+
+    font-family: var(--font-data);
+    font-size: 9px;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color:
+        var(--text-muted);
+}
+
+.mip-layout {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr 1.2fr;
+}
+
+.mip-description {
+    padding:
+        clamp(32px, 5vw, 65px);
+
+    border-right:
+        1px solid
+        var(--line);
+}
+
+.mip-description h2 {
+    margin:
+        15px 0
+        24px;
+
+    font-size:
+        clamp(38px, 5vw, 66px);
+
+    line-height: 0.98;
+
+    letter-spacing: -0.045em;
+}
+
+.mip-console {
+    padding:
+        clamp(26px, 4vw, 48px);
+
+    background:
+        rgba(1, 5, 12, 0.72);
+
+    font-family:
+        var(--font-data);
+}
+
+
+/* ================================================================
+   TELEMETRY
+================================================================ */
+
+.telemetry-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    background:
+        var(--line);
+
+    border:
+        1px solid
+        var(--line);
+
+    margin-bottom: 30px;
+}
+
+.telemetry-item {
+    padding:
+        18px;
+
+    background:
+        rgba(3, 10, 20, 0.96);
+}
+
+.telemetry-value {
+    display: block;
+
+    margin-top: 6px;
+
+    color:
+        var(--stellar-white);
+
+    font-size:
+        clamp(17px, 2vw, 23px);
+}
+
+.telemetry-unit {
+    color:
+        var(--text-muted);
+
+    font-size: 9px;
+}
+
+
+/* ================================================================
+   PIPELINE
+================================================================ */
+
+.mission-pipeline {
+    display: grid;
+
+    gap: 6px;
+
+    margin-top: 28px;
+}
+
+.mission-pipeline-node {
+    position: relative;
+
+    padding:
+        12px 15px;
+
+    border-left:
+        2px solid
+        var(--spectral-blue);
+
+    background:
+        rgba(17, 40, 67, 0.35);
+
+    color:
+        #c7d7eb;
+
+    font-family:
+        var(--font-data);
+
+    font-size: 11px;
+}
+
+.mission-pipeline-node::after {
+    content: "↓";
+
+    position: absolute;
+
+    left: -6px;
+    bottom: -15px;
+
+    color:
+        var(--spectral-blue);
+
+    z-index: 2;
+}
+
+.mission-pipeline-node:last-child::after {
+    display: none;
+}
+
+
+/* ================================================================
+   ANOMALY PANEL
+================================================================ */
+
+.anomaly-panel {
+    margin-top: 28px;
+
+    padding: 22px;
+
+    border:
+        1px solid
+        rgba(233, 202, 122, 0.32);
+
+    background:
+        rgba(233, 202, 122, 0.04);
+}
+
+.anomaly-title {
+    color:
+        var(--civilization-gold);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 10px;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   RESEARCH OBSERVATORY
+================================================================ */
+
+.research-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+.research-portal {
+    position: relative;
+
+    min-height: 430px;
+
+    border:
+        1px solid
+        var(--line);
+
+    overflow: hidden;
+
+    background:
+        var(--panel-solid);
+
+    isolation: isolate;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.research-portal:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        var(--line-bright);
+}
+
+.research-portal img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: -3;
+
+    opacity: 0.5;
+
+    transform:
+        scale(1.02);
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease;
+}
+
+.research-portal:hover img {
+    transform:
+        scale(1.07);
+
+    opacity: 0.7;
+}
+
+.research-portal::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -2;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(1, 4, 10, 0.98) 8%,
+            rgba(1, 4, 10, 0.68) 52%,
+            rgba(1, 4, 10, 0.18) 100%
+        );
+}
+
+.research-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 28px;
+}
+
+.research-content h3 {
+    margin:
+        12px 0
+        10px;
+
+    font-size: 27px;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.025em;
+}
+
+.research-content p {
+    color:
+        var(--text-secondary);
+
+    font-size: 14px;
+
+    margin: 0;
+}
+
+
+/* ================================================================
+   GREAT QUESTIONS
+================================================================ */
+
+.great-questions {
+    background:
+        linear-gradient(
+            to bottom,
+            var(--space-black),
+            #030817,
+            var(--space-black)
+        );
+}
+
+.question {
+    min-height: 58vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        50px 24px;
+
+    text-align: center;
+}
+
+.question p {
+    max-width: 1000px;
+
+    margin: 0;
+
+    color:
+        rgba(238, 245, 255, 0.22);
+
+    font-size:
+        clamp(38px, 6vw, 82px);
+
+    line-height: 1.03;
+
+    letter-spacing: -0.05em;
+
+    transition:
+        color 0.7s ease,
+        transform 0.7s ease,
+        text-shadow 0.7s ease;
+}
+
+.question.visible p {
+    color:
+        var(--stellar-white);
+
+    transform:
+        scale(1.015);
+
+    text-shadow:
+        0 0 45px
+        rgba(120, 200, 255, 0.08);
+}
+
+
+/* ================================================================
+   CIVILIZATION HORIZON
+================================================================ */
+
+.civilization-section {
+    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(44, 105, 190, 0.09),
+            transparent 42%
+        ),
+        var(--space-black);
+}
+
+.civilization-timeline {
+    position: relative;
+
+    max-width: 1000px;
+
+    margin:
+        80px auto
+        0;
+
+    padding:
+        20px 0;
+}
+
+.civilization-line {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--spectral-blue),
+            var(--civilization-gold),
+            transparent
+        );
+
+    opacity: 0.45;
+}
+
+.civilization-stage {
+    position: relative;
+
+    width: 50%;
+
+    padding:
+        60px
+        clamp(30px, 6vw, 80px);
+
+    opacity: 0.35;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.civilization-stage:nth-child(even) {
+    margin-left: 50%;
+}
+
+.civilization-stage:nth-child(odd) {
+    text-align: right;
+}
+
+.civilization-stage.active {
+    opacity: 1;
+    transform:
+        translateY(-4px);
+}
+
+.civilization-marker {
+    position: absolute;
+
+    top: 74px;
+
+    width: 13px;
+    height: 13px;
+
+    border:
+        1px solid
+        var(--spectral-blue);
+
+    border-radius: 50%;
+
+    background:
+        var(--space-black);
+
+    box-shadow:
+        0 0 0 6px
+        rgba(120, 200, 255, 0.05);
+}
+
+.civilization-stage:nth-child(odd)
+.civilization-marker {
+    right: -7px;
+}
+
+.civilization-stage:nth-child(even)
+.civilization-marker {
+    left: -6px;
+}
+
+.civilization-stage.active
+.civilization-marker {
+    background:
+        var(--spectral-blue);
+
+    box-shadow:
+        0 0 24px
+        rgba(120, 200, 255, 0.7);
+}
+
+.civilization-type {
+    color:
+        var(--spectral-blue);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 11px;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.civilization-stage h3 {
+    margin:
+        10px 0
+        12px;
+
+    font-size:
+        clamp(30px, 4vw, 48px);
+
+    letter-spacing:
+        -0.04em;
+}
+
+.civilization-stage p {
+    color:
+        var(--text-secondary);
+}
+
+
+/* ================================================================
+   TYPE II / TYPE III CINEMATIC PANELS
+================================================================ */
+
+.civilization-cinematic {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+}
+
+.civilization-cinematic-content {
+    max-width: 780px;
+}
+
+.hypothesis-label {
+    display: inline-flex;
+
+    margin-top: 25px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid
+        rgba(233, 202, 122, 0.35);
+
+    color:
+        var(--civilization-gold);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   COSMIC SCALE
+================================================================ */
+
+.cosmic-scale {
+    position: relative;
+}
+
+.scale-grid {
+    margin-top: 70px;
+
+    border-top:
+        1px solid
+        var(--line);
+}
+
+.scale-stage {
+    display: grid;
+
+    grid-template-columns:
+        150px 1fr 160px;
+
+    gap: 40px;
+
+    align-items: center;
+
+    min-height: 130px;
+
+    border-bottom:
+        1px solid
+        var(--line);
+}
+
+.scale-number {
+    color:
+        var(--spectral-blue);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 11px;
+}
+
+.scale-stage h3 {
+    margin: 0;
+
+    font-size:
+        clamp(27px, 4vw, 48px);
+
+    letter-spacing:
+        -0.035em;
+}
+
+.scale-distance {
+    color:
+        var(--text-muted);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 11px;
+
+    text-align: right;
+}
+
+
+/* ================================================================
+   SCIENTIFIC DISCLAIMER
+================================================================ */
+
+.scientific-principle {
+    margin-top: 55px;
+
+    padding:
+        25px 28px;
+
+    border-left:
+        2px solid
+        var(--civilization-gold);
+
+    background:
+        rgba(233, 202, 122, 0.035);
+
+    color:
+        var(--text-secondary);
+}
+
+.scientific-principle strong {
+    color:
+        var(--stellar-white);
+}
+
+
+/* ================================================================
+   FINAL SEQUENCE
+================================================================ */
+
+.cosmos-final {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.final-earth {
+    width: 8px;
+    height: 8px;
+
+    margin:
+        0 auto
+        50px;
+
+    border-radius: 50%;
+
+    background:
+        #87cfff;
+
+    box-shadow:
+        0 0 12px
+        #87cfff,
+        0 0 35px
+        rgba(135, 207, 255, 0.35);
+}
+
+.cosmos-final h2 {
+    margin:
+        0 auto;
+
+    max-width: 1000px;
+
+    font-size:
+        clamp(48px, 8vw, 110px);
+
+    line-height:
+        0.95;
+
+    letter-spacing:
+        -0.06em;
+}
+
+.final-brand {
+    margin-top: 55px;
+
+    color:
+        var(--spectral-blue);
+
+    font-family:
+        var(--font-data);
+
+    font-size: 11px;
+
+    letter-spacing:
+        0.24em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* ================================================================
+   FOOTER
+================================================================ */
+
+.cosmos-footer {
+    padding:
+        38px 0
+        55px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    color:
+        var(--text-muted);
+
+    font-size: 12px;
+}
+
+.cosmos-footer-inner {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+
+@media (max-width: 1000px) {
+
+    .mission-links {
+        display: none;
+    }
+
+    .pillar-grid,
+    .research-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .mip-layout {
+        grid-template-columns:
+            1fr;
+    }
+
+    .mip-description {
+        border-right: 0;
+
+        border-bottom:
+            1px solid
+            var(--line);
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .cosmos-wrap,
+    .mission-nav-inner {
+        width:
+            min(
+                100% - 30px,
+                var(--max-width)
+            );
+    }
+
+    .system-online {
+        display: none;
+    }
+
+    .mission-brand-name {
+        font-size: 11px;
+    }
+
+    .mission-brand img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .cosmic-hero {
+        min-height: 92svh;
+
+        padding-top: 115px;
+    }
+
+    .cosmic-hero::before {
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(1, 2, 7, 0.48),
+                rgba(1, 2, 7, 0.88) 48%,
+                var(--space-black) 95%
+            ),
+            url("../hark-cosmos-labs-omniverse-hero.png")
+            center /
+            cover
+            no-repeat;
+    }
+
+    .cosmos-section-header {
+        grid-template-columns:
+            1fr;
+
+        gap: 25px;
+    }
+
+    .pillar-grid,
+    .research-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .pillar {
+        min-height: 320px;
+    }
+
+    .pillar h3 {
+        margin-top: 70px;
+    }
+
+    .telemetry-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .civilization-line {
+        left: 8px;
+    }
+
+    .civilization-stage,
+    .civilization-stage:nth-child(even) {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding:
+            45px 20px
+            45px 45px;
+
+        text-align: left;
+    }
+
+    .civilization-stage:nth-child(odd)
+    .civilization-marker,
+    .civilization-stage:nth-child(even)
+    .civilization-marker {
+        left: 2px;
+        right: auto;
+    }
+
+    .scale-stage {
+        grid-template-columns:
+            75px 1fr;
+
+        gap: 18px;
+
+        padding:
+            25px 0;
+    }
+
+    .scale-distance {
+        grid-column:
+            2;
+
+        text-align: left;
+    }
+
+    .question {
+        min-height: 45vh;
+    }
+}
+
+
+/* ================================================================
+   ACCESSIBILITY
+================================================================ */
+
+:focus-visible {
+    outline:
+        2px solid
+        var(--spectral-blue);
+
+    outline-offset:
+        4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
