@@ -1,2250 +1,1930 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
 
-    <title>HARK COSMOS LABS | Space Intelligence, AI & Fundamental Research</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        HARK COSMOS LABS | Civilization, Cosmos & Intelligence
+    </title>
 
     <meta
         name="description"
-        content="HARK COSMOS LABS develops AI-native space mission intelligence and explores astrophysics, cosmology, exoplanets, black holes and the long-term future of civilization."
+        content="HARK COSMOS LABS explores space intelligence, advanced computing, fundamental physics, astrophysics, cosmology, astrobiology and the long-term future of technological civilization."
     >
 
-    <link rel="canonical" href="https://www.harkcosmoslabs.com/">
-
-    <style>
-
-        :root {
-            --bg: #050814;
-            --panel: #0b1225;
-            --text: #eef4ff;
-            --muted: #9fb1d0;
-            --line: #1c3152;
-            --cyan: #62d9ff;
-            --violet: #9f7cff;
-            --max: 1180px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            margin: 0;
-
-            background:
-                radial-gradient(circle at 80% 5%, #18234c 0, transparent 28%),
-                var(--bg);
-
-            color: var(--text);
-
-            font:
-                16px/1.65 Inter,
-                ui-sans-serif,
-                system-ui,
-                -apple-system,
-                Segoe UI,
-                sans-serif;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .wrap {
-            width: min(var(--max), calc(100% - 40px));
-            margin: auto;
-        }
-
-
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-
-            background: #050814e8;
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid #ffffff12;
-        }
-
-        .nav {
-            height: 82px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 24px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-
-            font-weight: 800;
-            letter-spacing: .13em;
-            font-size: 15px;
-        }
-
-        .brand-logo {
-            width: 54px;
-            height: 54px;
-
-            object-fit: cover;
-            border-radius: 50%;
-
-            display: block;
-            flex-shrink: 0;
-
-            box-shadow:
-                0 0 12px rgba(98, 217, 255, .30),
-                0 0 28px rgba(98, 217, 255, .12);
-
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease;
-        }
-
-        .brand-logo:hover {
-            transform: scale(1.06);
-
-            box-shadow:
-                0 0 16px rgba(98, 217, 255, .45),
-                0 0 34px rgba(98, 217, 255, .20);
-        }
-
-        .brand-text {
-            white-space: nowrap;
-        }
-
-        .brand span {
-            color: var(--cyan);
-        }
-
-        .links {
-            display: flex;
-            gap: 24px;
-
-            color: #c6d2e8;
-            font-size: 14px;
-        }
-
-
-        /* =========================================================
-           HERO
-        ========================================================= */
-
-        .hero {
-            min-height: 780px;
-
-            display: grid;
-            align-items: center;
-
-            position: relative;
-            overflow: hidden;
-        }
-
-        /*
-           ORIGINAL PRE-ANDROMEDA HERO
-        */
-
-        .hero::after {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #050814 7%,
-                    #050814e8 32%,
-                    #050814b5 52%,
-                    #05081445 80%
-                ),
-                url("hark-cosmos-labs-omniverse-hero.png")
-                center right / cover no-repeat;
-
-            z-index: -1;
-            opacity: .88;
-        }
-
-        .eyebrow {
-            color: var(--cyan);
-
-            letter-spacing: .18em;
-            text-transform: uppercase;
-
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .hero h1 {
-            font-size: clamp(50px, 7vw, 94px);
-            line-height: .94;
-
-            max-width: 900px;
-
-            margin: 18px 0 26px;
-
-            letter-spacing: -.055em;
-        }
-
-        .grad {
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--cyan),
-                    #c8b8ff
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-        }
-
-        .lead {
-            font-size: 20px;
-
-            color: #c7d4e9;
-
-            max-width: 760px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 14px;
-
-            margin-top: 34px;
-
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 13px 19px;
-
-            border: 1px solid #46688f;
-            border-radius: 9px;
-
-            font-weight: 700;
-
-            transition:
-                transform .2s ease,
-                background .2s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            background: #ffffff0c;
-        }
-
-        .btn.primary {
-            background: #eaf7ff;
-            color: #06101f;
-
-            border-color: #eaf7ff;
-        }
-
-        .btn.primary:hover {
-            background: white;
-        }
-
-
-        /* =========================================================
-           METRICS
-        ========================================================= */
-
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-
-            border-top: 1px solid var(--line);
-            border-bottom: 1px solid var(--line);
-        }
-
-        .metric {
-            padding: 28px 20px;
-
-            border-right: 1px solid var(--line);
-        }
-
-        .metric:last-child {
-            border: 0;
-        }
-
-        .metric b {
-            display: block;
-            font-size: 25px;
-        }
-
-        .metric span {
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-
-        /* =========================================================
-           GENERAL SECTIONS
-        ========================================================= */
-
-        section {
-            padding: 100px 0;
-        }
-
-        .sectionhead {
-            display: grid;
-            grid-template-columns: .7fr 1.3fr;
-
-            gap: 60px;
-
-            margin-bottom: 45px;
-        }
-
-        .sectionhead h2 {
-            font-size: clamp(36px, 5vw, 62px);
-            line-height: 1;
-
-            margin: 0;
-
-            letter-spacing: -.04em;
-        }
-
-        .sectionhead p {
-            color: var(--muted);
-
-            font-size: 18px;
-
-            margin: 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 16px;
-        }
-
-        .card {
-            background:
-                linear-gradient(
-                    145deg,
-                    #0c1529,
-                    #080e1d
-                );
-
-            border: 1px solid #1a2d4b;
-            border-radius: 14px;
-
-            padding: 28px;
-
-            min-height: 235px;
-
-            transition:
-                transform .25s ease,
-                border-color .25s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: #365f8f;
-        }
-
-        .card .num {
-            font: 12px ui-monospace, monospace;
-
-            color: var(--cyan);
-        }
-
-        .card h3 {
-            font-size: 22px;
-
-            margin: 35px 0 10px;
-        }
-
-        .card p {
-            color: var(--muted);
-
-            margin: 0;
-        }
-
-
-        /* =========================================================
-           INTERACTIVE RESEARCH FLIP CARDS
-        ========================================================= */
-
-        .flip-card {
-            position: relative;
-
-            background: transparent;
-
-            min-height: 410px;
-            height: 410px;
-
-            perspective: 1400px;
-            -webkit-perspective: 1400px;
-
-            cursor: pointer;
-
-            border-radius: 14px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-
-            width: 100%;
-            height: 100%;
-
-            transition:
-                transform .75s cubic-bezier(.2, .7, .2, 1);
-
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-
-            transform: rotateY(0deg);
-        }
-
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front,
-        .flip-card-back {
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            border: 1px solid #1a2d4b;
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-
-            transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-        }
-
-        .flip-card-front {
-            z-index: 2;
-
-            transform: rotateY(0deg);
-            -webkit-transform: rotateY(0deg);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0c1529,
-                    #080e1d
-                );
-
-            padding: 28px;
-        }
-
-        .flip-card-front .num {
-            font: 12px ui-monospace, monospace;
-
-            color: var(--cyan);
-        }
-
-        .flip-card-front h3 {
-            font-size: 22px;
-
-            margin: 35px 0 10px;
-        }
-
-        .flip-card-front p {
-            color: var(--muted);
-
-            margin: 0;
-        }
-
-        .flip-card-back {
-            z-index: 1;
-
-            transform: rotateY(180deg);
-            -webkit-transform: rotateY(180deg);
-
-            background: #030713;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .flip-card-back img {
-            display: block;
-
-            width: 100%;
-            height: 100%;
-
-            object-fit: contain;
-            object-position: center;
-
-            pointer-events: none;
-
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        .flip-card.flipped .flip-card-front {
-            z-index: 1;
-        }
-
-        .flip-card.flipped .flip-card-back {
-            z-index: 2;
-        }
-
-        .flip-hint {
-            position: absolute;
-
-            left: 28px;
-            bottom: 24px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 8px;
-
-            color: var(--cyan);
-
-            font-size: 11px;
-            font-weight: 700;
-
-            letter-spacing: .12em;
-            text-transform: uppercase;
-
-            pointer-events: none;
-        }
-
-        .flip-icon {
-            font-size: 18px;
-
-            transition:
-                transform .3s ease;
-        }
-
-        .flip-card:hover .flip-icon {
-            transform: rotate(180deg);
-        }
-
-        .flip-card:focus-visible {
-            outline: 2px solid var(--cyan);
-            outline-offset: 5px;
-        }
-
-
-        /* =========================================================
-           COSMOS MISSION INTELLIGENCE PLATFORM
-        ========================================================= */
-
-        .product {
-            background:
-                linear-gradient(
-                    135deg,
-                    #0b1831,
-                    #10142b
-                );
-
-            border: 1px solid #25456e;
-            border-radius: 20px;
-
-            padding: 48px;
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            gap: 50px;
-        }
-
-        .product h2 {
-            font-size: 50px;
-            line-height: 1;
-
-            margin: 8px 0 20px;
-        }
-
-        .pipeline {
-            display: grid;
-            gap: 9px;
-        }
-
-        .pipe {
-            padding: 12px 15px;
-
-            background: #07101f;
-
-            border: 1px solid #1c365a;
-            border-radius: 8px;
-
-            color: #cbd9ee;
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-top: 25px;
-        }
-
-        .chip {
-            border: 1px solid #294a71;
-
-            padding: 8px 12px;
-
-            border-radius: 999px;
-
-            color: #bdd0ea;
-
-            font-size: 13px;
-        }
-
-
-        /* =========================================================
-           RESEARCH
-        ========================================================= */
-
-        .research {
-            background: #070b17;
-        }
-
-        .multiverse-showcase {
-            margin: 0 0 55px;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0b1428,
-                    #070c18
-                );
-
-            border: 1px solid #25456e;
-            border-radius: 22px;
-        }
-
-        .multiverse-image {
-            position: relative;
-
-            background: #050814;
-        }
-
-        .multiverse-image img {
-            display: block;
-
-            width: 100%;
-            height: auto;
-
-            max-height: 680px;
-
-            object-fit: cover;
-        }
-
-        .multiverse-content {
-            padding: 38px;
-        }
-
-        .multiverse-content h3 {
-            font-size: clamp(30px, 4vw, 50px);
-
-            line-height: 1.08;
-            letter-spacing: -.03em;
-
-            margin: 10px 0 18px;
-        }
-
-        .multiverse-content p {
-            max-width: 920px;
-
-            color: var(--muted);
-
-            font-size: 17px;
-
-            margin: 0;
-        }
-
-        .principle {
-            border-left: 3px solid var(--violet);
-
-            padding: 18px 24px;
-
-            background: #0c1020;
-
-            color: #c9d5e8;
-
-            margin-top: 35px;
-        }
-
-
-        /* =========================================================
-           CTA
-        ========================================================= */
-
-        .cta {
-            text-align: center;
-
-            padding: 120px 0;
-        }
-
-        .cta h2 {
-            font-size: clamp(42px, 6vw, 76px);
-            line-height: 1;
-
-            margin: 0 auto 25px;
-
-            max-width: 900px;
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        footer {
-            border-top: 1px solid var(--line);
-
-            padding: 35px 0 55px;
-
-            color: #8396b5;
-
-            font-size: 13px;
-        }
-
-        .foot {
-            display: flex;
-            justify-content: space-between;
-
-            gap: 25px;
-
-            flex-wrap: wrap;
-        }
-
-        /* =========================================================
-   ANIMATED UNIVERSE — SPACE & INTELLIGENCE SYSTEMS
-========================================================= */
-
-.animated-universe {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-
-    background:
-        radial-gradient(
-            ellipse at 75% 30%,
-            rgba(44, 73, 150, .18),
-            transparent 45%
-        ),
-        radial-gradient(
-            ellipse at 20% 75%,
-            rgba(88, 45, 145, .12),
-            transparent 42%
-        ),
-        #050814;
-}
-
-
-/* Keep all section content above the universe */
-
-.animated-universe > .wrap {
-    position: relative;
-    z-index: 5;
-}
-
-
-/* =========================================================
-   DISTANT STAR FIELD
-========================================================= */
-
-.animated-universe::before {
-    content: "";
-
-    position: absolute;
-    inset: -100px;
-
-    z-index: 1;
-
-    pointer-events: none;
-
-    background-image:
-
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.95) 0 1px,
-            transparent 1.7px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(98,217,255,.85) 0 1px,
-            transparent 1.8px
-        ),
-
-        radial-gradient(
-            circle,
-            rgba(200,184,255,.75) 0 1px,
-            transparent 1.7px
-        );
-
-    background-size:
-        95px 95px,
-        145px 145px,
-        210px 210px;
-
-    background-position:
-        10px 20px,
-        50px 70px,
-        110px 30px;
-
-    opacity: .55;
-
-    animation:
-        universeDrift 45s linear infinite,
-        universeTwinkle 4s ease-in-out infinite alternate;
-}
-
-
-/* =========================================================
-   BRIGHT GLITTERING STARS
-========================================================= */
-
-.animated-universe::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    z-index: 2;
-
-    pointer-events: none;
-
-    background:
-
-        radial-gradient(
-            circle at 8% 22%,
-            rgba(255,255,255,.95) 0 1px,
-            rgba(98,217,255,.55) 2px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            circle at 18% 72%,
-            rgba(255,255,255,.9) 0 1px,
-            rgba(160,205,255,.45) 2px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            circle at 32% 35%,
-            rgba(255,255,255,.95) 0 1px,
-            rgba(98,217,255,.5) 2px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            circle at 46% 78%,
-            rgba(255,255,255,.9) 0 1px,
-            rgba(200,184,255,.5) 2px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            circle at 61% 18%,
-            rgba(255,255,255,1) 0 1px,
-            rgba(98,217,255,.6) 2px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            circle at 73% 61%,
-            rgba(255,255,255,.95) 0 1px,
-            rgba(180,210,255,.5) 2px,
-            transparent 5px
-        ),
-
-        radial-gradient(
-            circle at 87% 29%,
-            rgba(255,255,255,1) 0 1px,
-            rgba(98,217,255,.65) 2px,
-            transparent 6px
-        ),
-
-        radial-gradient(
-            circle at 94% 82%,
-            rgba(255,255,255,.9) 0 1px,
-            rgba(200,184,255,.5) 2px,
-            transparent 5px
-        );
-
-    animation:
-        starGlitter 2.8s ease-in-out infinite alternate;
-}
-
-
-/* =========================================================
-   STAR-FIELD MOVEMENT
-========================================================= */
-
-@keyframes universeDrift {
-
-    from {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(-70px, 45px, 0)
-            scale(1.04);
-    }
-}
-
-
-/* =========================================================
-   DISTANT STAR TWINKLING
-========================================================= */
-
-@keyframes universeTwinkle {
-
-    0% {
-        opacity: .35;
-        filter: brightness(.85);
-    }
-
-    50% {
-        opacity: .65;
-        filter: brightness(1.15);
-    }
-
-    100% {
-        opacity: .48;
-        filter: brightness(1);
-    }
-}
-
-
-/* =========================================================
-   BRIGHT STAR GLITTER
-========================================================= */
-
-@keyframes starGlitter {
-
-    0% {
-        opacity: .28;
-        filter:
-            brightness(.8)
-            blur(.1px);
-    }
-
-    35% {
-        opacity: .85;
-        filter:
-            brightness(1.5)
-            blur(0);
-    }
-
-    65% {
-        opacity: .42;
-        filter:
-            brightness(1);
-    }
-
-    100% {
-        opacity: 1;
-        filter:
-            brightness(1.8);
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY — REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .animated-universe::before,
-    .animated-universe::after {
-        animation: none;
-    }
-}
-
-
-        /* =========================================================
-           MOBILE
-        ========================================================= */
-
-        @media (max-width: 800px) {
-
-            .links {
-                display: none;
-            }
-
-            .metrics,
-            .grid,
-            .sectionhead,
-            .product {
-                grid-template-columns: 1fr;
-            }
-
-            .metric {
-                border-right: 0;
-                border-bottom: 1px solid var(--line);
-            }
-
-            .hero {
-                min-height: 700px;
-            }
-
-            .product {
-                padding: 28px;
-            }
-
-            .product h2 {
-                font-size: 38px;
-            }
-
-            .multiverse-content {
-                padding: 25px;
-            }
-
-            .flip-card {
-                height: 430px;
-                min-height: 430px;
-            }
-        }
-
-    </style>
-
+    <link
+        rel="canonical"
+        href="https://www.harkcosmoslabs.com/"
+    >
+
+    <meta
+        name="theme-color"
+        content="#010207"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/cosmos.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/animations.css"
+    >
 </head>
 
 
 <body>
 
+    <!-- ==========================================================
+         ACCESSIBILITY
+    =========================================================== -->
 
-<!-- =============================================================
-     NAVIGATION
-============================================================= -->
+    <a
+        href="#main-content"
+        class="skip-link"
+    >
+        Skip to main content
+    </a>
 
-<nav>
 
-    <div class="wrap nav">
+    <!-- ==========================================================
+         GLOBAL COSMIC ENVIRONMENT
+    =========================================================== -->
 
-        <a class="brand" href="#top">
+    <canvas
+        id="cosmic-starfield"
+        aria-hidden="true"
+    ></canvas>
 
-            <img
-                src="hark-cosmos-labs-logo.png"
-                alt="HARK COSMOS LABS"
-                class="brand-logo"
+
+    <!-- ==========================================================
+         MISSION CONTROL NAVIGATION
+    =========================================================== -->
+
+    <header
+        class="mission-nav"
+        id="mission-control-nav"
+    >
+
+        <div class="mission-nav-inner">
+
+            <a
+                class="mission-brand"
+                href="#home"
+                aria-label="HARK COSMOS LABS home"
             >
-
-            <div class="brand-text">
-                HARK <span>COSMOS</span> LABS
-            </div>
-
-        </a>
-
-
-        <div class="links">
-
-            <a href="#mission">Mission</a>
-
-            <a href="#systems">Systems</a>
-
-            <a href="#mip">COSMOS MIP</a>
-
-            <a href="#research">Research</a>
-
-            <a href="#vision">Vision</a>
-
-        </div>
-
-    </div>
-
-</nav>
-
-
-<!-- =============================================================
-     HERO
-============================================================= -->
-
-<header class="hero" id="top">
-
-    <div class="wrap">
-
-        <div class="eyebrow">
-            Space Intelligence · Fundamental Research · Advanced Computing
-        </div>
-
-        <h1>
-
-            Understand the Cosmos.<br>
-
-            <span class="grad">
-                Engineer the Future.
-            </span>
-
-            <br>
-
-            Advance Civilization.
-
-        </h1>
-
-
-        <p class="lead">
-
-            HARK COSMOS LABS is building toward a future where
-            artificial intelligence, advanced computing and rigorous
-            science accelerate space exploration and deepen humanity's
-            understanding of the Universe.
-
-        </p>
-
-
-        <div class="buttons">
-
-            <a class="btn primary" href="#mip">
-                Explore COSMOS MIP
-            </a>
-
-            <a class="btn" href="#research">
-                Explore Research
-            </a>
-
-        </div>
-
-    </div>
-
-</header>
-
-
-<!-- =============================================================
-     CORE DOMAINS
-============================================================= -->
-
-<div class="metrics">
-
-    <div class="metric">
-        <b>AI + Space</b>
-        <span>Mission intelligence & autonomous systems</span>
-    </div>
-
-    <div class="metric">
-        <b>Cloud Native</b>
-        <span>Distributed scientific computing</span>
-    </div>
-
-    <div class="metric">
-        <b>Astrophysics</b>
-        <span>Stars, galaxies, black holes & radiation</span>
-    </div>
-
-    <div class="metric">
-        <b>Cosmology</b>
-        <span>Origins, evolution & fundamental questions</span>
-    </div>
-
-</div>
-
-
-<!-- =============================================================
-     MISSION
-============================================================= -->
-
-<section id="mission">
-
-    <div class="wrap">
-
-        <div class="sectionhead">
-
-            <h2>
-                Our Mission
-            </h2>
-
-            <p>
-
-                To advance humanity's understanding and exploration of
-                the Universe through the convergence of astronomy,
-                astrophysics, cosmology, mathematics, artificial
-                intelligence and advanced computing—while developing
-                intelligent technologies for space missions,
-                astronomical discovery and the long-term advancement
-                of a spacefaring civilization.
-
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <span class="num">
-                    01 / DISCOVER
-                </span>
-
-                <h3>
-                    Understand the Universe
-                </h3>
-
-                <p>
-                    Study the birth and evolution of cosmic structure—from
-                    the early Universe to stars, galaxies, planetary
-                    systems and black holes.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    02 / ENGINEER
-                </span>
-
-                <h3>
-                    Build Space Intelligence
-                </h3>
-
-                <p>
-                    Create resilient AI-enabled software for telemetry,
-                    mission operations, scientific data processing and
-                    autonomous decision support.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    03 / ADVANCE
-                </span>
-
-                <h3>
-                    Expand Human Capability
-                </h3>
-
-                <p>
-                    Explore how science, computation and intelligent
-                    systems can help humanity progress toward a durable
-                    spacefaring future.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     SPACE & INTELLIGENCE SYSTEMS
-============================================================= -->
-
-<section id="systems" class="animated-universe">
-
-    <div class="wrap">
-
-        <div class="sectionhead">
-
-            <h2>
-                Space & Intelligence Systems
-            </h2>
-
-            <p>
-
-                Our commercial technology direction starts with software:
-                high-reliability distributed systems, real-time data,
-                AI-assisted operations and scientific computing for the
-                growing space economy.
-
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <span class="num">
-                    PLATFORM
-                </span>
-
-                <h3>
-                    Space Computing
-                </h3>
-
-                <p>
-                    Java, Spring Boot, Python, microservices, secure APIs,
-                    Kubernetes and infrastructure-as-code for cloud-native
-                    mission workloads.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    STREAMING
-                </span>
-
-                <h3>
-                    Real-Time Mission Data
-                </h3>
-
-                <p>
-                    Kafka and Apache Flink pipelines for telemetry
-                    ingestion, event-time processing, correlation,
-                    anomaly signals and operational insight.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    INTELLIGENCE
-                </span>
-
-                <h3>
-                    Scientific AI
-                </h3>
-
-                <p>
-                    AI/GenAI, retrieval systems and scientific agents
-                    designed to assist—not obscure—human reasoning with
-                    traceable evidence.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     COSMOS MISSION INTELLIGENCE PLATFORM
-============================================================= -->
-
-<section id="mip">
-
-    <div class="wrap">
-
-        <div class="product">
-
-            <div>
-
-                <div class="eyebrow">
-                    Flagship Product Concept
-                </div>
-
-                <h2>
-                    COSMOS Mission Intelligence Platform
-                </h2>
-
-                <p class="lead">
-
-                    An AI-native mission intelligence platform envisioned
-                    to transform spacecraft and mission data into timely,
-                    explainable operational insight.
-
-                </p>
-
-
-                <div class="chips">
-
-                    <span class="chip">
-                        Telemetry
-                    </span>
-
-                    <span class="chip">
-                        Anomaly Detection
-                    </span>
-
-                    <span class="chip">
-                        Event Correlation
-                    </span>
-
-                    <span class="chip">
-                        Mission Knowledge
-                    </span>
-
-                    <span class="chip">
-                        Operator Decision Support
-                    </span>
-
-                </div>
-
-            </div>
-
-
-            <div class="pipeline">
-
-                <div class="pipe">
-                    01 · Spacecraft / Satellite / Scientific Data
-                </div>
-
-                <div class="pipe">
-                    02 · Cloud-Native Ingestion
-                </div>
-
-                <div class="pipe">
-                    03 · Kafka → Flink Real-Time Processing
-                </div>
-
-                <div class="pipe">
-                    04 · Java / Spring Boot Mission Services
-                </div>
-
-                <div class="pipe">
-                    05 · Python Scientific & ML Services
-                </div>
-
-                <div class="pipe">
-                    06 · AI / RAG / Knowledge Systems
-                </div>
-
-                <div class="pipe">
-                    07 · Mission Console · Alerts · APIs · Insight
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     FUNDAMENTAL RESEARCH
-============================================================= -->
-
-<section class="research" id="research">
-
-    <div class="wrap">
-
-
-        <div class="sectionhead">
-
-            <h2>
-                Fundamental Research
-            </h2>
-
-            <p>
-
-                Our long-horizon research vision spans observational
-                astronomy, theoretical astrophysics, cosmology,
-                mathematical physics and the search for life and
-                intelligence beyond Earth.
-
-            </p>
-
-        </div>
-
-
-        <!-- =====================================================
-             MULTIVERSE RESEARCH VISUALIZATION
-        ====================================================== -->
-
-        <div class="multiverse-showcase">
-
-            <div class="multiverse-image">
 
                 <img
-                    src="hark-cosmos-multiverse-lab.png"
-                    alt="Conceptual visualization of multiverse cosmology, hypothetical universe structures, cosmic inflation and quantum cosmology"
+                    src="hark-cosmos-labs-logo.png"
+                    alt=""
+                    width="46"
+                    height="46"
                 >
 
-            </div>
-
-
-            <div class="multiverse-content">
-
-                <div class="eyebrow">
-                    Theoretical Cosmology
+                <div class="mission-brand-name">
+                    HARK
+                    <span>COSMOS</span>
+                    LABS
                 </div>
 
-                <h3>
-                    Exploring Possible Architectures of the Universe
-                </h3>
+            </a>
 
-                <p>
 
-                    HARK COSMOS LABS explores theoretical questions
-                    involving cosmic inflation, bubble universes,
-                    quantum cosmology, possible multiverse structures
-                    and the mathematical foundations of cosmological
-                    models. These concepts are investigated as
-                    theoretical possibilities rather than established
-                    observational discoveries.
+            <nav
+                class="mission-links"
+                aria-label="Primary navigation"
+            >
 
-                </p>
+                <a href="#mission">
+                    Mission
+                </a>
 
+                <a href="#cosmos-mip">
+                    COSMOS MIP
+                </a>
+
+                <a href="#research">
+                    Research
+                </a>
+
+                <a href="#civilization">
+                    Civilization
+                </a>
+
+                <a href="#cosmic-scale">
+                    Scale
+                </a>
+
+            </nav>
+
+
+            <div
+                class="system-online"
+                aria-label="Website systems online"
+            >
+                Systems Online
             </div>
 
         </div>
 
-
-        <!-- =====================================================
-             RESEARCH FLIP CARDS
-        ====================================================== -->
-
-        <div class="grid">
+    </header>
 
 
-            <!-- COSMOLOGY -->
+    <!-- ==========================================================
+         MAIN
+    =========================================================== -->
 
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Origins of the Universe. Click to reveal cosmology visualization."
-                aria-pressed="false"
-            >
+    <main id="main-content">
 
-                <div class="flip-card-inner">
 
-                    <div class="flip-card-front">
+        <!-- ======================================================
+             HERO
+        ======================================================= -->
 
-                        <span class="num">
-                            COSMOLOGY
+        <section
+            class="cosmic-hero"
+            id="home"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div class="hero-content">
+
+                    <div class="hero-classification">
+
+                        <strong>
+                            EARTH
+                        </strong>
+
+                        <span>
+                            /
                         </span>
 
-                        <h3>
-                            Origins of the Universe
-                        </h3>
-
-                        <p>
-                            Big Bang cosmology, cosmic inflation,
-                            nucleosynthesis, the cosmic microwave background,
-                            structure formation and cosmic evolution.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
-                        </div>
+                        <span>
+                            PRE-TYPE I CIVILIZATION
+                        </span>
 
                     </div>
 
 
-                    <div class="flip-card-back">
+                    <div class="cosmos-eyebrow">
+                        Civilization · Cosmos · Intelligence
+                    </div>
+
+
+                    <h1 class="cosmos-title">
+
+                        Understand
+                        <span class="cosmos-gradient">
+                            the Cosmos.
+                        </span>
+
+                        <br>
+
+                        Engineer
+                        the Future.
+
+                        <br>
+
+                        Advance
+                        Civilization.
+
+                    </h1>
+
+
+                    <p class="cosmos-lead">
+
+                        HARK COSMOS LABS explores the intersection
+                        of space intelligence, advanced computing
+                        and fundamental science — asking how deeper
+                        knowledge of the Universe could expand the
+                        long-term capabilities of technological
+                        civilization.
+
+                    </p>
+
+
+                    <div class="hero-actions">
+
+                        <a
+                            class="cosmos-button primary"
+                            href="#cosmos-mip"
+                        >
+                            Enter COSMOS MIP
+                        </a>
+
+                        <a
+                            class="cosmos-button"
+                            href="#civilization"
+                        >
+                            Civilization Horizon
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             WHY WE EXIST
+        ======================================================= -->
+
+        <section
+            class="cosmos-section"
+            id="mission"
+        >
+
+            <div
+                class="scientific-grid"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="cosmos-wrap">
+
+                <div class="cosmos-section-header reveal">
+
+                    <div>
+
+                        <div class="cosmos-eyebrow">
+                            Why We Exist
+                        </div>
+
+                        <h2>
+                            One planet.
+                            One species.
+                            An immense Universe.
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Humanity arose on one planet orbiting one
+                        star in a vast cosmos. HARK COSMOS LABS
+                        exists to explore what we can understand,
+                        what we can engineer, and what humanity
+                        might eventually become as scientific and
+                        technological capability advances.
+
+                    </p>
+
+                </div>
+
+
+                <div class="pillar-grid">
+
+                    <article
+                        class="pillar reveal"
+                    >
+
+                        <div class="pillar-number">
+                            01 / DISCOVER
+                        </div>
+
+                        <h3>
+                            Understand
+                            the Universe
+                        </h3>
+
+                        <p>
+
+                            Investigate fundamental questions across
+                            astrophysics, cosmology, gravitation,
+                            planetary science, astrobiology,
+                            mathematics and the foundations of
+                            physical reality.
+
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="pillar reveal reveal-delay-1"
+                    >
+
+                        <div class="pillar-number">
+                            02 / ENGINEER
+                        </div>
+
+                        <h3>
+                            Build Space
+                            Intelligence
+                        </h3>
+
+                        <p>
+
+                            Explore cloud-native computing,
+                            distributed systems, streaming data,
+                            scientific machine learning and
+                            AI-assisted knowledge systems for
+                            future space and scientific missions.
+
+                        </p>
+
+                    </article>
+
+
+                    <article
+                        class="pillar reveal reveal-delay-2"
+                    >
+
+                        <div class="pillar-number">
+                            03 / ADVANCE
+                        </div>
+
+                        <h3>
+                            Expand Human
+                            Capability
+                        </h3>
+
+                        <p>
+
+                            Study the technologies, scientific
+                            questions and long-term challenges that
+                            may shape humanity's transition toward
+                            increasingly capable planetary,
+                            stellar and perhaps interstellar
+                            civilization.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             COSMOS MIP
+        ======================================================= -->
+
+        <section
+            class="cosmos-section"
+            id="cosmos-mip"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div
+                    class="mip-shell reveal"
+                    data-mission-control
+                >
+
+                    <div class="mip-header">
+
+                        <span>
+                            HARK COSMOS LABS //
+                            COSMOS MIP
+                        </span>
+
+                        <span>
+                            CONCEPT SYSTEM
+                        </span>
+
+                    </div>
+
+
+                    <div class="mip-layout">
+
+
+                        <!-- MIP DESCRIPTION -->
+
+                        <div class="mip-description">
+
+                            <div class="cosmos-eyebrow">
+                                Flagship Product Concept
+                            </div>
+
+
+                            <h2>
+                                COSMOS Mission
+                                Intelligence Platform
+                            </h2>
+
+
+                            <p class="cosmos-lead">
+
+                                An AI-native mission intelligence
+                                platform concept envisioned to
+                                transform spacecraft and scientific
+                                data into timely, explainable and
+                                operationally useful insight.
+
+                            </p>
+
+
+                            <div
+                                class="scientific-principle"
+                            >
+
+                                <strong>
+                                    Conceptual architecture.
+                                </strong>
+
+                                COSMOS MIP represents a research and
+                                engineering direction for future
+                                mission-intelligence systems. The
+                                interface and telemetry displayed
+                                here are simulations, not operational
+                                spacecraft data.
+
+                            </div>
+
+
+                            <div class="mission-pipeline">
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    01 · SPACECRAFT /
+                                    SCIENTIFIC DATA
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    02 · CLOUD-NATIVE
+                                    INGESTION
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    03 · KAFKA EVENT
+                                    STREAMING
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    04 · FLINK REAL-TIME
+                                    PROCESSING
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    05 · JAVA / SPRING
+                                    MISSION SERVICES
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    06 · PYTHON SCIENTIFIC
+                                    & ML SERVICES
+                                </div>
+
+                                <div
+                                    class="mission-pipeline-node"
+                                >
+                                    07 · AI / RAG /
+                                    MISSION INTELLIGENCE
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MISSION CONSOLE -->
+
+                        <div class="mip-console">
+
+                            <div class="data-label">
+                                COSMOS MIP //
+                                MISSION SIMULATION
+                            </div>
+
+
+                            <h3>
+                                HCL-X1
+                                AUTONOMOUS SCIENCE EXPLORER
+                            </h3>
+
+
+                            <p class="data-label">
+                                SIMULATION ·
+                                NOT LIVE SPACECRAFT DATA
+                            </p>
+
+
+                            <div class="telemetry-grid">
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Distance
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="distance"
+                                        data-live="true"
+                                    >
+                                        7.420
+                                    </span>
+
+                                    <span class="telemetry-unit">
+                                        AU
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Velocity
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="velocity"
+                                        data-live="true"
+                                    >
+                                        17.41
+                                    </span>
+
+                                    <span class="telemetry-unit">
+                                        km/s
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Signal
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="signal"
+                                    >
+                                        NOMINAL
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Power
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="power"
+                                        data-live="true"
+                                    >
+                                        87.2
+                                    </span>
+
+                                    <span class="telemetry-unit">
+                                        %
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Thermal
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="thermal"
+                                    >
+                                        NOMINAL
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Data Stream
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="data-rate"
+                                        data-live="true"
+                                    >
+                                        3,421
+                                    </span>
+
+                                    <span class="telemetry-unit">
+                                        events/s
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Events Processed
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-telemetry="events"
+                                    >
+                                        128,472
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Simulation Time
+                                    </span>
+
+                                    <span
+                                        class="telemetry-value"
+                                        data-mission-clock
+                                    >
+                                        00:00:00
+                                    </span>
+
+                                </div>
+
+
+                                <div class="telemetry-item">
+
+                                    <span class="data-label">
+                                        Mission State
+                                    </span>
+
+                                    <span class="telemetry-value">
+                                        CRUISE
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="data-label">
+                                STREAMING EVENT LOG
+                            </div>
+
+
+                            <div
+                                class="mission-log"
+                                data-mission-log
+                                aria-live="off"
+                            ></div>
+
+
+                            <div class="anomaly-panel">
+
+                                <div class="anomaly-title">
+                                    AI-Assisted Anomaly Assessment
+                                </div>
+
+
+                                <p>
+                                    <strong>
+                                        Detected:
+                                    </strong>
+
+                                    <span
+                                        data-anomaly-status
+                                    >
+                                        Reaction Wheel #3
+                                        vibration signature
+                                    </span>
+                                </p>
+
+
+                                <p>
+                                    <strong>
+                                        Confidence:
+                                    </strong>
+
+                                    <span
+                                        data-anomaly-confidence
+                                    >
+                                        97.4%
+                                    </span>
+                                </p>
+
+
+                                <p>
+                                    <strong>
+                                        Recommended diagnostic:
+                                    </strong>
+
+                                    <span
+                                        data-anomaly-recommendation
+                                    >
+                                        Run diagnostic sequence
+                                        HCL-RW-03
+                                    </span>
+                                </p>
+
+
+                                <div class="data-label">
+                                    ILLUSTRATIVE AI OUTPUT ·
+                                    SIMULATION ONLY
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             RESEARCH OBSERVATORY
+        ======================================================= -->
+
+        <section
+            class="cosmos-section"
+            id="research"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div class="cosmos-section-header reveal">
+
+                    <div>
+
+                        <div class="cosmos-eyebrow">
+                            Research Observatory
+                        </div>
+
+                        <h2>
+                            Questions across
+                            the cosmic frontier.
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        HARK COSMOS LABS explores scientific
+                        questions from stellar evolution and
+                        planetary systems to black holes,
+                        cosmology, technosignatures and the
+                        mathematical foundations used to describe
+                        physical reality.
+
+                    </p>
+
+                </div>
+
+
+                <div class="research-grid">
+
+
+                    <!-- COSMOLOGY -->
+
+                    <article class="research-portal reveal">
 
                         <img
                             src="cosmology-origins-universe.png"
-                            alt="Origins of the Universe visualization"
+                            alt="Conceptual visualization representing cosmology and the early Universe"
+                            loading="lazy"
                         >
 
-                    </div>
+                        <div class="research-content">
 
-                </div>
+                            <div class="data-label">
+                                01 / COSMOLOGY
+                            </div>
 
-            </article>
+                            <h3>
+                                Origins of
+                                the Universe
+                            </h3>
 
+                            <p>
+                                Cosmic expansion, early-Universe
+                                physics, large-scale structure and
+                                the evolution of the cosmos.
+                            </p>
 
-            <!-- GRAVITY -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Black Holes. Click to reveal gravity visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            GRAVITY
-                        </span>
-
-                        <h3>
-                            Black Holes
-                        </h3>
-
-                        <p>
-                            Stellar, intermediate and supermassive black holes;
-                            horizons, accretion, relativistic jets, Hawking
-                            radiation and the information problem.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="flip-card-back">
+                    <!-- GRAVITY -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-1"
+                    >
 
                         <img
                             src="gravity-black-holes.png"
-                            alt="Black holes visualization"
+                            alt="Conceptual visualization of a black hole and surrounding accretion environment"
+                            loading="lazy"
                         >
 
-                    </div>
+                        <div class="research-content">
 
-                </div>
+                            <div class="data-label">
+                                02 / GRAVITY
+                            </div>
 
-            </article>
+                            <h3>
+                                Black Holes
+                            </h3>
 
+                            <p>
+                                Event horizons, relativistic
+                                gravity, accretion physics and the
+                                extreme environments where our
+                                understanding of spacetime is
+                                tested.
+                            </p>
 
-            <!-- STELLAR -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Stars, Nebulae, Gas and Dust. Click to reveal stellar visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            STELLAR
-                        </span>
-
-                        <h3>
-                            Stars, Nebulae, Gas & Dust
-                        </h3>
-
-                        <p>
-                            Molecular clouds, stellar birth and evolution,
-                            emission, reflection and dark nebulae, supernova
-                            remnants and the interstellar medium.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="flip-card-back">
+                    <!-- STELLAR -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-2"
+                    >
 
                         <img
                             src="stellar-stars-nebulae-gas-dust.png"
-                            alt="Stars, nebulae, gas and dust visualization"
+                            alt="Stars, nebulae, gas and dust in a stellar environment"
+                            loading="lazy"
                         >
 
-                    </div>
+                        <div class="research-content">
 
-                </div>
+                            <div class="data-label">
+                                03 / STELLAR
+                            </div>
 
-            </article>
+                            <h3>
+                                Stars, Nebulae,
+                                Gas & Dust
+                            </h3>
 
+                            <p>
+                                Stellar birth, evolution and death;
+                                the interstellar medium; and the
+                                physical processes shaping luminous
+                                structures across galaxies.
+                            </p>
 
-            <!-- EXTRAGALACTIC -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Galaxies Beyond the Milky Way. Click to reveal extragalactic visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            EXTRAGALACTIC
-                        </span>
-
-                        <h3>
-                            Galaxies Beyond the Milky Way
-                        </h3>
-
-                        <p>
-                            Galaxy formation and evolution, gas and dust,
-                            active galactic nuclei, quasars, mergers, clusters
-                            and large-scale structure.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
                         </div>
 
-                    </div>
+                    </article>
 
 
-                    <div class="flip-card-back">
+                    <!-- EXTRAGALACTIC -->
+
+                    <article class="research-portal reveal">
 
                         <img
                             src="extragalactic-galaxies-beyond-milky-way.png"
-                            alt="Galaxies beyond the Milky Way visualization"
+                            alt="Conceptual deep-space view of galaxies beyond the Milky Way"
+                            loading="lazy"
                         >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                04 / EXTRAGALACTIC
+                            </div>
+
+                            <h3>
+                                Galaxies Beyond
+                                the Milky Way
+                            </h3>
+
+                            <p>
+                                Galaxy formation, evolution,
+                                interactions, active galactic
+                                nuclei and structure on
+                                extragalactic scales.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- PLANETARY -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-1"
+                    >
+
+                        <img
+                            src="exoplanets-planetary-systems.png"
+                            alt="Conceptual visualization of an exoplanetary system"
+                            loading="lazy"
+                        >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                05 / PLANETARY
+                            </div>
+
+                            <h3>
+                                Exoplanets &
+                                Planetary Systems
+                            </h3>
+
+                            <p>
+                                Planet formation, atmospheres,
+                                orbital systems, habitability and
+                                the extraordinary diversity of
+                                worlds beyond our Solar System.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- RADIATIVE -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-2"
+                    >
+
+                        <img
+                            src="radiative-multiwavelength-astronomy.png"
+                            alt="Conceptual multi-wavelength astronomical observation"
+                            loading="lazy"
+                        >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                06 / RADIATIVE
+                            </div>
+
+                            <h3>
+                                Multi-Wavelength
+                                Astronomy
+                            </h3>
+
+                            <p>
+                                Understanding the Universe across
+                                radio, infrared, optical,
+                                ultraviolet, X-ray and gamma-ray
+                                regimes.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- ASTROBIOLOGY -->
+
+                    <article class="research-portal reveal">
+
+                        <img
+                            src="astrobiology-life-technosignatures.png"
+                            alt="Conceptual astrobiology and technosignature visualization"
+                            loading="lazy"
+                        >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                07 / ASTROBIOLOGY
+                            </div>
+
+                            <h3>
+                                Life &
+                                Technosignatures
+                            </h3>
+
+                            <p>
+                                Habitability, biosignatures, the
+                                emergence of intelligence and
+                                possible observational signatures
+                                of distant technology.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- FOUNDATIONS -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-1"
+                    >
+
+                        <img
+                            src="foundations-multiverse-quantum-cosmology.png"
+                            alt="Conceptual representation of quantum cosmology and theoretical multiverse models"
+                            loading="lazy"
+                        >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                08 / FOUNDATIONS
+                            </div>
+
+                            <h3>
+                                Multiverse &
+                                Quantum Cosmology
+                            </h3>
+
+                            <p>
+                                Theoretical models concerning the
+                                earliest Universe, quantum
+                                cosmology and possible cosmic
+                                architectures beyond the observable
+                                Universe.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- MATHEMATICS -->
+
+                    <article
+                        class="research-portal reveal reveal-delay-2"
+                    >
+
+                        <img
+                            src="mathematics-mathematical-foundations.png"
+                            alt="Conceptual visualization of mathematical structures underlying physical science"
+                            loading="lazy"
+                        >
+
+                        <div class="research-content">
+
+                            <div class="data-label">
+                                09 / MATHEMATICS
+                            </div>
+
+                            <h3>
+                                Mathematical
+                                Foundations
+                            </h3>
+
+                            <p>
+                                Mathematical structures, models
+                                and abstractions that help describe
+                                physical systems from local
+                                dynamics to cosmic scales.
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <div
+                    class="scientific-principle reveal"
+                >
+
+                    <strong>
+                        Scientific principle:
+                    </strong>
+
+                    HARK COSMOS LABS distinguishes established
+                    observation from active hypothesis and
+                    speculative theory. Subjects including
+                    extraterrestrial technological civilizations
+                    and multiverse models are treated as research
+                    questions, not established discoveries.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             GREAT QUESTIONS
+        ======================================================= -->
+
+        <section
+            class="cosmos-section great-questions"
+            id="questions"
+            aria-labelledby="questions-heading"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div class="cosmos-eyebrow">
+                    The Questions We Ask
+                </div>
+
+                <h2
+                    id="questions-heading"
+                    class="cosmos-title-medium"
+                >
+                    Some questions change
+                    how civilization sees itself.
+                </h2>
+
+            </div>
+
+
+            <div class="question">
+                <p>
+                    How did the Universe begin?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    What happens beyond an event horizon?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    How common is life?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    How common is intelligence?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    Can technological civilizations survive
+                    their own adolescence?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    What signatures might a stellar
+                    civilization produce?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    Can intelligence become
+                    a galactic phenomenon?
+                </p>
+            </div>
+
+
+            <div class="question">
+                <p>
+                    What is humanity capable
+                    of becoming?
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             CIVILIZATION HORIZON
+        ======================================================= -->
+
+        <section
+            class="cosmos-section civilization-section"
+            id="civilization"
+        >
+
+            <div
+                class="scientific-grid"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="cosmos-wrap">
+
+                <div class="cosmos-section-header reveal">
+
+                    <div>
+
+                        <div class="cosmos-eyebrow">
+                            Civilization Horizon
+                        </div>
+
+                        <h2>
+                            From one planet
+                            toward the stars.
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        The Kardashev scale provides a conceptual
+                        framework for thinking about civilizations
+                        in terms of the energy available to them.
+                        Humanity remains below Type I. Type II and
+                        Type III civilizations remain hypothetical;
+                        none has been confirmed.
+
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="data-label"
+                    data-civilization-readout
+                    aria-live="polite"
+                >
+                    NOW · HUMANITY
+                </div>
+
+
+                <div
+                    class="civilization-progress"
+                    data-civilization-progress
+                    role="progressbar"
+                    aria-label="Civilization Horizon progress"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                ></div>
+
+
+                <div class="civilization-timeline">
+
+                    <div
+                        class="civilization-line"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    <!-- HUMANITY -->
+
+                    <article
+                        class="civilization-stage"
+                        data-type="NOW"
+                        data-label="HUMANITY"
+                    >
+
+                        <div
+                            class="civilization-marker"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="civilization-type">
+                            Humanity
+                        </div>
+
+                        <h3>
+                            Pre-Type I
+                        </h3>
+
+                        <p>
+
+                            A technological civilization confined
+                            primarily to one planet, beginning to
+                            extend robotic and human capability
+                            beyond Earth while confronting
+                            planetary-scale challenges.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- TYPE I -->
+
+                    <article
+                        class="civilization-stage"
+                        data-type="TYPE I"
+                        data-label="PLANETARY CIVILIZATION"
+                    >
+
+                        <div
+                            class="civilization-marker"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="civilization-type">
+                            Type I
+                        </div>
+
+                        <h3>
+                            Planetary
+                            Civilization
+                        </h3>
+
+                        <p>
+
+                            A hypothetical civilization capable of
+                            operating at planetary scale, with
+                            increasingly integrated energy,
+                            information, scientific and spacefaring
+                            infrastructure.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- TYPE II -->
+
+                    <article
+                        class="civilization-stage"
+                        data-type="TYPE II"
+                        data-label="STELLAR CIVILIZATION"
+                    >
+
+                        <div
+                            class="civilization-marker"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="civilization-type">
+                            Type II
+                        </div>
+
+                        <h3>
+                            Stellar
+                            Civilization
+                        </h3>
+
+                        <p>
+
+                            A hypothetical civilization operating
+                            on the scale of its star's available
+                            energy, potentially involving extensive
+                            infrastructure throughout a planetary
+                            system.
+
+                        </p>
+
+                    </article>
+
+
+                    <!-- TYPE III -->
+
+                    <article
+                        class="civilization-stage"
+                        data-type="TYPE III"
+                        data-label="GALACTIC CIVILIZATION"
+                    >
+
+                        <div
+                            class="civilization-marker"
+                            aria-hidden="true"
+                        ></div>
+
+                        <div class="civilization-type">
+                            Type III
+                        </div>
+
+                        <h3>
+                            Galactic
+                            Civilization
+                        </h3>
+
+                        <p>
+
+                            A hypothetical civilization whose
+                            technological activity extends across
+                            galactic scales — raising profound
+                            questions about interstellar expansion,
+                            distributed intelligence and detectable
+                            technosignatures.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             TYPE II
+        ======================================================= -->
+
+        <section
+            class="cosmos-section civilization-cinematic"
+            id="type-two"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div class="civilization-cinematic-content reveal">
+
+                    <div class="cosmos-eyebrow">
+                        Type II / Stellar Horizons
+                    </div>
+
+
+                    <h2 class="cosmos-title-medium">
+
+                        When a civilization
+                        begins to think
+                        at the scale of
+
+                        <span class="cosmos-gradient">
+                            a star.
+                        </span>
+
+                    </h2>
+
+
+                    <p class="cosmos-lead">
+
+                        What might intelligence become when the
+                        energy and infrastructure of an entire
+                        stellar system become accessible?
+
+                    </p>
+
+
+                    <div class="hypothesis-label">
+                        Hypothetical · No confirmed Type II
+                        civilization observed
+                    </div>
+
+
+                    <div class="scientific-principle">
+
+                        Possible research directions include
+                        technosignatures, infrared excess,
+                        large-scale stellar-energy collection,
+                        autonomous infrastructure, interplanetary
+                        industry and long-distance communication.
+
+                        Dyson-swarm-like systems are hypothetical
+                        engineering concepts, not observed
+                        extraterrestrial structures.
 
                     </div>
 
                 </div>
 
-            </article>
+            </div>
 
 
-            <!-- PLANETARY -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Exoplanets and Planetary Systems. Click to reveal planetary visualization."
-                aria-pressed="false"
+            <div
+                class="type-two-visual"
+                aria-hidden="true"
             >
 
-                <div class="flip-card-inner">
+                <div class="stellar-core"></div>
 
-                    <div class="flip-card-front">
 
-                        <span class="num">
-                            PLANETARY
+                <div class="stellar-orbit orbit-1">
+
+                    <span class="collector c1"></span>
+                    <span class="collector c2"></span>
+                    <span class="collector c3"></span>
+                    <span class="collector c4"></span>
+
+                </div>
+
+
+                <div class="stellar-orbit orbit-2">
+
+                    <span class="collector c1"></span>
+                    <span class="collector c2"></span>
+                    <span class="collector c3"></span>
+                    <span class="collector c4"></span>
+
+                </div>
+
+
+                <div class="stellar-orbit orbit-3">
+
+                    <span class="collector c1"></span>
+                    <span class="collector c2"></span>
+                    <span class="collector c3"></span>
+                    <span class="collector c4"></span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             TYPE III
+        ======================================================= -->
+
+        <section
+            class="cosmos-section civilization-cinematic"
+            id="type-three"
+        >
+
+            <div
+                class="type-three-visual"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="cosmos-wrap">
+
+                <div class="civilization-cinematic-content reveal">
+
+                    <div class="cosmos-eyebrow">
+                        Type III / Galactic Questions
+                    </div>
+
+
+                    <h2 class="cosmos-title-medium">
+
+                        What if intelligence
+                        became a
+
+                        <span class="cosmos-gradient">
+                            galactic phenomenon?
                         </span>
 
+                    </h2>
+
+
+                    <p class="cosmos-lead">
+
+                        If technological intelligence could expand
+                        across a galaxy, what observational
+                        signatures might it leave behind?
+
+                    </p>
+
+
+                    <div class="hypothesis-label">
+                        Hypothetical · No confirmed Type III
+                        civilization observed
+                    </div>
+
+
+                    <div class="scientific-principle">
+
+                        Questions at this scale connect
+                        astrophysics, SETI, technosignature
+                        research, computation, interstellar
+                        communication, autonomous systems and the
+                        long-term dynamics of technological
+                        civilization.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             COSMIC SCALE
+        ======================================================= -->
+
+        <section
+            class="cosmos-section cosmic-scale"
+            id="cosmic-scale"
+        >
+
+            <div class="cosmos-wrap">
+
+                <div class="cosmos-section-header reveal">
+
+                    <div>
+
+                        <div class="cosmos-eyebrow">
+                            Cosmic Scale
+                        </div>
+
+                        <h2>
+                            Perspective changes
+                            with distance.
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Civilization begins on a world measured in
+                        thousands of kilometers, inside a Universe
+                        whose observable diameter spans roughly
+                        ninety-three billion light-years.
+
+                    </p>
+
+                </div>
+
+
+                <div class="scale-grid">
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            01
+                        </div>
+
                         <h3>
-                            Exoplanets & Planetary Systems
+                            Earth
                         </h3>
 
-                        <p>
-                            Planet formation, protoplanetary disks, orbital
-                            systems, atmospheric characterization, habitability
-                            and planetary evolution.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
+                        <div class="scale-distance">
+                            ~12,742 km diameter
                         </div>
 
                     </div>
 
 
-                    <div class="flip-card-back">
+                    <div class="scale-stage">
 
-                        <img
-                            src="exoplanets-planetary-systems.png"
-                            alt="Exoplanets and planetary systems visualization"
-                        >
+                        <div class="scale-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Earth → Sun
+                        </h3>
+
+                        <div class="scale-distance">
+                            1 AU · ~149.6 million km
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Heliopause
+                        </h3>
+
+                        <div class="scale-distance">
+                            ~120 AU · approximate
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Proxima Centauri
+                        </h3>
+
+                        <div class="scale-distance">
+                            ~4.24 light-years
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Milky Way
+                        </h3>
+
+                        <div class="scale-distance">
+                            ~100,000 light-years
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            06
+                        </div>
+
+                        <h3>
+                            Andromeda Galaxy
+                        </h3>
+
+                        <div class="scale-distance">
+                            ~2.5 million light-years away
+                        </div>
+
+                    </div>
+
+
+                    <div class="scale-stage">
+
+                        <div class="scale-number">
+                            07
+                        </div>
+
+                        <h3>
+                            Observable Universe
+                        </h3>
+
+                        <div class="scale-distance">
+                            ~93 billion light-years diameter
+                        </div>
 
                     </div>
 
                 </div>
 
-            </article>
+
+                <div class="scientific-principle reveal">
+
+                    Distances are rounded for orientation.
+                    The heliopause varies with direction and solar
+                    conditions, and astronomical dimensions such
+                    as galactic size depend on how boundaries are
+                    defined.
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-            <!-- RADIATIVE -->
+        <!-- ======================================================
+             FINAL
+        ======================================================= -->
 
-            <!-- =====================================================
-     RADIATIVE — MULTI-WAVELENGTH ASTRONOMY FLIP CARD
-====================================================== -->
+        <section class="cosmos-final">
 
-<article
-    class="flip-card"
-    tabindex="0"
-    role="button"
-    aria-label="Multi-Wavelength Astronomy. Click to reveal radiative astronomy visualization."
-    aria-pressed="false"
->
+            <div class="cosmos-wrap">
 
-    <div class="flip-card-inner">
+                <div
+                    class="final-earth"
+                    aria-hidden="true"
+                ></div>
 
-        <!-- =========================
-             FRONT — RADIATIVE
-        ========================== -->
 
-        <div class="flip-card-front">
+                <div class="data-label">
+                    EARTH
+                </div>
 
-            <span class="num">
-                RADIATIVE
-            </span>
 
-            <h3>
-                Multi-Wavelength Astronomy
-            </h3>
+                <h2>
+                    We have only
+                    just begun.
+                </h2>
 
-            <p>
-                Radio through gamma-ray astronomy, spectroscopy and
-                multimessenger approaches combining photons,
-                gravitational waves and neutrinos.
-            </p>
 
-            <div class="flip-hint">
-                <span class="flip-icon">↻</span>
-                Click to explore
+                <p
+                    class="cosmos-lead"
+                    style="
+                        margin:
+                            30px auto 0;
+                    "
+                >
+
+                    The Universe is vast.
+                    Our knowledge is incomplete.
+                    The future remains unwritten.
+
+                </p>
+
+
+                <div class="final-brand">
+
+                    HARK COSMOS LABS
+
+                    <br>
+
+                    ADVANCE CIVILIZATION
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==========================================================
+         FOOTER
+    =========================================================== -->
+
+    <footer class="cosmos-footer">
+
+        <div
+            class="cosmos-wrap cosmos-footer-inner"
+        >
+
+            <div>
+                ©
+                <span data-current-year>
+                    2026
+                </span>
+                HARK COSMOS LABS
+            </div>
+
+
+            <div>
+                Civilization · Cosmos · Intelligence
+            </div>
+
+
+            <div>
+                Scientific exploration &
+                advanced computing
             </div>
 
         </div>
 
-
-        <!-- =========================
-             BACK — RADIATIVE
-        ========================== -->
-
-        <div class="flip-card-back">
-
-            <img
-                src="radiative-multiwavelength-astronomy.png"
-                alt="Multi-Wavelength Astronomy — radio, microwave, infrared, visible, ultraviolet, X-ray and gamma-ray astronomy, spectroscopy and multimessenger astronomy"
-            >
-
-        </div>
-
-    </div>
-
-</article>
-
-
-            <!-- ASTROBIOLOGY -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Life and Technosignatures. Click to reveal astrobiology visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            ASTROBIOLOGY
-                        </span>
-
-                        <h3>
-                            Life & Technosignatures
-                        </h3>
-
-                        <p>
-                            Evidence-driven searches for biosignatures and
-                            technosignatures, alongside rigorous study of the
-                            Fermi paradox and SETI questions.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
-                        </div>
-
-                    </div>
-
-
-                    <div class="flip-card-back">
-
-                        <img
-                            src="astrobiology-life-technosignatures.png"
-                            alt="Astrobiology, life and technosignatures visualization"
-                        >
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- FOUNDATIONS -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Multiverse and Quantum Cosmology. Click to reveal foundations visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            FOUNDATIONS
-                        </span>
-
-                        <h3>
-                            Multiverse & Quantum Cosmology
-                        </h3>
-
-                        <p>
-                            Theoretical study of eternal inflation, bubble
-                            universes, many-worlds, the string landscape and
-                            mathematical models of possible cosmological
-                            structures.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
-                        </div>
-
-                    </div>
-
-
-                    <div class="flip-card-back">
-
-                        <img
-                            src="foundations-multiverse-quantum-cosmology.png"
-                            alt="Multiverse and quantum cosmology visualization"
-                        >
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-            <!-- MATHEMATICS -->
-
-            <article
-                class="flip-card"
-                tabindex="0"
-                role="button"
-                aria-label="Mathematical Foundations. Click to reveal mathematics visualization."
-                aria-pressed="false"
-            >
-
-                <div class="flip-card-inner">
-
-                    <div class="flip-card-front">
-
-                        <span class="num">
-                            MATHEMATICS
-                        </span>
-
-                        <h3>
-                            Mathematical Foundations
-                        </h3>
-
-                        <p>
-                            Algebra, geometry, trigonometry, calculus,
-                            differential equations, numerical methods and
-                            mathematical physics—from classical mechanics
-                            to relativity.
-                        </p>
-
-                        <div class="flip-hint">
-                            <span class="flip-icon">↻</span>
-                            Click to explore
-                        </div>
-
-                    </div>
-
-
-                    <div class="flip-card-back">
-
-                        <img
-                            src="mathematics-mathematical-foundations.png"
-                            alt="Mathematical foundations visualization"
-                        >
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </div>
-
-
-        <div class="principle">
-
-            <b>Scientific principle:</b>
-
-            HARK COSMOS LABS distinguishes established observation
-            from active hypothesis and speculative theory. Multiverse
-            models, extraterrestrial intelligence and related
-            foundational questions are presented as research
-            questions—not established discoveries.
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     CIVILIZATION FUTURES
-============================================================= -->
-
-<section id="vision">
-
-    <div class="wrap">
-
-        <div class="sectionhead">
-
-            <h2>
-                Civilization Futures
-            </h2>
-
-            <p>
-
-                Beyond near-term space software, we are interested in
-                the long arc of technological civilization: the Fermi
-                paradox, SETI, technosignatures, artificial
-                intelligence, planetary resilience and the Kardashev
-                framework for thinking about civilization-scale
-                energy and capability.
-
-            </p>
-
-        </div>
-
-
-        <div class="grid">
-
-
-            <article class="card">
-
-                <span class="num">
-                    TYPE I
-                </span>
-
-                <h3>
-                    Planetary Capability
-                </h3>
-
-                <p>
-                    Advanced computation, energy systems, planetary
-                    science and technologies that strengthen
-                    civilization on Earth.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    TYPE II
-                </span>
-
-                <h3>
-                    Stellar Horizons
-                </h3>
-
-                <p>
-                    Long-term questions around interplanetary and
-                    interstellar expansion, autonomous systems and
-                    detectable stellar-scale engineering.
-                </p>
-
-            </article>
-
-
-            <article class="card">
-
-                <span class="num">
-                    TYPE III
-                </span>
-
-                <h3>
-                    Galactic Questions
-                </h3>
-
-                <p>
-                    Theoretical exploration of mature technological
-                    civilizations, observational signatures and
-                    humanity's place in the cosmic story.
-                </p>
-
-            </article>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     FINAL CTA
-============================================================= -->
-
-<section class="cta">
-
-    <div class="wrap">
-
-        <div class="eyebrow">
-            HARK COSMOS LABS
-        </div>
-
-        <h2>
-
-            From intelligent space systems to the deepest questions
-            in cosmology.
-
-        </h2>
-
-        <p
-            class="lead"
-            style="margin:auto"
-        >
-
-            A long-term research and technology vision at the
-            intersection of space, science, mathematics and
-            computation.
-
-        </p>
-
-
-        <div
-            class="buttons"
-            style="justify-content:center"
-        >
-
-            <a
-                class="btn primary"
-                href="#top"
-            >
-                Return to Mission Control
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =============================================================
-     FOOTER
-============================================================= -->
-
-<footer>
-
-    <div class="wrap foot">
-
-        <div>
-
-            <b>
-                HARK COSMOS LABS
-            </b>
-
-            <br>
-
-            Understand the Cosmos.
-            Engineer the Future.
-            Advance Civilization.
-
-        </div>
-
-
-        <div>
-
-            © 2026 HARK COSMOS LABS · harkcosmoslabs.com
-
-            <br>
-
-            Research and product concepts presented here are
-            developmental unless otherwise stated.
-
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- =============================================================
-     FLIP CARD JAVASCRIPT
-============================================================= -->
-
-<script>
-
-document.querySelectorAll(".flip-card").forEach((card) => {
-
-    function toggleCard() {
-
-        const flipped =
-            card.classList.toggle("flipped");
-
-        card.setAttribute(
-            "aria-pressed",
-            flipped ? "true" : "false"
-        );
-    }
-
-
-    card.addEventListener(
-        "click",
-        toggleCard
-    );
-
-
-    card.addEventListener(
-        "keydown",
-        (event) => {
-
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
-
-                event.preventDefault();
-
-                toggleCard();
-            }
-
-        }
-    );
-
-});
-
-</script>
-
+    </footer>
+
+
+    <!-- ==========================================================
+         JAVASCRIPT
+    =========================================================== -->
+
+    <script
+        src="js/starfield.js"
+        defer
+    ></script>
+
+    <script
+        src="js/civilization.js"
+        defer
+    ></script>
+
+    <script
+        src="js/mission-control.js"
+        defer
+    ></script>
+
+    <script
+        src="js/cosmos.js"
+        defer
+    ></script>
 
 </body>
-
 </html>
