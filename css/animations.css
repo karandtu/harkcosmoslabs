@@ -1,1 +1,1106 @@
-/* HARK COSMOS LABS — Cosmic Animation System */
+/* ================================================================
+   HARK COSMOS LABS
+   COSMIC ANIMATION SYSTEM
+   Scientific motion • Stellar environments • Civilization horizon
+   ================================================================ */
+
+
+/* ================================================================
+   01 — GLOBAL REVEAL SYSTEM
+================================================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(34px);
+
+    transition:
+        opacity 0.9s cubic-bezier(.2, .7, .2, 1),
+        transform 0.9s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.12s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.24s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.36s;
+}
+
+
+/* ================================================================
+   02 — HERO ARRIVAL
+================================================================ */
+
+.hero-content .hero-classification,
+.hero-content .cosmos-eyebrow,
+.hero-content .cosmos-title,
+.hero-content .cosmos-lead,
+.hero-content .hero-actions {
+    opacity: 0;
+    transform: translateY(24px);
+
+    animation:
+        heroArrival 1s
+        cubic-bezier(.2, .7, .2, 1)
+        forwards;
+}
+
+.hero-content .hero-classification {
+    animation-delay: 0.12s;
+}
+
+.hero-content .cosmos-eyebrow {
+    animation-delay: 0.28s;
+}
+
+.hero-content .cosmos-title {
+    animation-delay: 0.42s;
+}
+
+.hero-content .cosmos-lead {
+    animation-delay: 0.62s;
+}
+
+.hero-content .hero-actions {
+    animation-delay: 0.82s;
+}
+
+@keyframes heroArrival {
+
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ================================================================
+   03 — HERO COSMIC BREATHING
+================================================================ */
+
+.cosmic-hero::before {
+    animation:
+        cosmicBreathing 18s
+        ease-in-out
+        infinite alternate;
+}
+
+@keyframes cosmicBreathing {
+
+    0% {
+        transform: scale(1.02);
+        filter:
+            brightness(.86)
+            saturate(.92);
+    }
+
+    100% {
+        transform: scale(1.075);
+        filter:
+            brightness(1.04)
+            saturate(1.08);
+    }
+}
+
+
+/* ================================================================
+   04 — SPECTRAL TEXT SHIMMER
+================================================================ */
+
+.cosmos-gradient {
+    background-size: 200% auto;
+
+    animation:
+        spectralShift 8s
+        linear
+        infinite;
+}
+
+@keyframes spectralShift {
+
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+
+/* ================================================================
+   05 — MISSION STATUS PULSE
+================================================================ */
+
+.system-online::before {
+    animation:
+        onlinePulse 2.4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes onlinePulse {
+
+    0%,
+    100% {
+        opacity: .55;
+
+        box-shadow:
+            0 0 4px
+            #69f0ae;
+    }
+
+    50% {
+        opacity: 1;
+
+        box-shadow:
+            0 0 14px
+            #69f0ae,
+            0 0 26px
+            rgba(105, 240, 174, .35);
+    }
+}
+
+
+/* ================================================================
+   06 — SCIENTIFIC GRID OVERLAY
+================================================================ */
+
+.scientific-grid {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    opacity: .22;
+
+    background-image:
+        linear-gradient(
+            rgba(120, 200, 255, .06) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(120, 200, 255, .06) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+}
+
+
+/* ================================================================
+   07 — MISSION CONTROL SCAN
+================================================================ */
+
+.mip-console {
+    position: relative;
+    overflow: hidden;
+}
+
+.mip-console::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 120px;
+
+    top: -140px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(99, 232, 255, .025),
+            rgba(99, 232, 255, .08),
+            rgba(99, 232, 255, .025),
+            transparent
+        );
+
+    animation:
+        consoleScan 9s
+        linear
+        infinite;
+}
+
+@keyframes consoleScan {
+
+    from {
+        transform:
+            translateY(-150px);
+    }
+
+    to {
+        transform:
+            translateY(1000px);
+    }
+}
+
+
+/* ================================================================
+   08 — TELEMETRY DATA PULSE
+================================================================ */
+
+.telemetry-value[data-live="true"] {
+    animation:
+        telemetryPulse 3.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes telemetryPulse {
+
+    0%,
+    100% {
+        color:
+            var(--stellar-white);
+
+        text-shadow:
+            none;
+    }
+
+    50% {
+        color:
+            var(--plasma-cyan);
+
+        text-shadow:
+            0 0 12px
+            rgba(99, 232, 255, .4);
+    }
+}
+
+
+/* ================================================================
+   09 — PIPELINE SIGNAL TRAVEL
+================================================================ */
+
+.mission-pipeline-node {
+    overflow: hidden;
+}
+
+.mission-pipeline-node::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 70px;
+
+    left: -90px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(99, 232, 255, .12),
+            transparent
+        );
+
+    animation:
+        pipelineSignal 5s
+        linear
+        infinite;
+}
+
+.mission-pipeline-node:nth-child(2)::before {
+    animation-delay: .35s;
+}
+
+.mission-pipeline-node:nth-child(3)::before {
+    animation-delay: .7s;
+}
+
+.mission-pipeline-node:nth-child(4)::before {
+    animation-delay: 1.05s;
+}
+
+.mission-pipeline-node:nth-child(5)::before {
+    animation-delay: 1.4s;
+}
+
+.mission-pipeline-node:nth-child(6)::before {
+    animation-delay: 1.75s;
+}
+
+.mission-pipeline-node:nth-child(7)::before {
+    animation-delay: 2.1s;
+}
+
+@keyframes pipelineSignal {
+
+    0% {
+        left: -90px;
+    }
+
+    45%,
+    100% {
+        left: 120%;
+    }
+}
+
+
+/* ================================================================
+   10 — ANOMALY DETECTION
+================================================================ */
+
+.anomaly-panel {
+    position: relative;
+}
+
+.anomaly-panel::before {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    top: 20px;
+    right: 20px;
+
+    border-radius: 50%;
+
+    background:
+        var(--civilization-gold);
+
+    box-shadow:
+        0 0 12px
+        rgba(233, 202, 122, .8);
+
+    animation:
+        anomalyPulse 1.8s
+        ease-in-out
+        infinite;
+}
+
+@keyframes anomalyPulse {
+
+    0%,
+    100% {
+        opacity: .35;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25);
+    }
+}
+
+
+/* ================================================================
+   11 — RESEARCH PORTAL LIGHT
+================================================================ */
+
+.research-portal::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    z-index: -1;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(99, 232, 255, .18),
+            transparent 45%
+        );
+
+    transition:
+        opacity .5s ease;
+}
+
+.research-portal:hover::before {
+    opacity: 1;
+}
+
+
+/* ================================================================
+   12 — QUESTION TRANSITION
+================================================================ */
+
+.question p {
+    filter:
+        blur(1.5px);
+}
+
+.question.visible p {
+    filter:
+        blur(0);
+}
+
+
+/* ================================================================
+   13 — CIVILIZATION TIMELINE ENERGY
+================================================================ */
+
+.civilization-line::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -1px;
+
+    width: 3px;
+    height: 120px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--plasma-cyan),
+            transparent
+        );
+
+    filter:
+        blur(.2px);
+
+    box-shadow:
+        0 0 15px
+        rgba(99, 232, 255, .4);
+
+    animation:
+        civilizationEnergy 6s
+        ease-in-out
+        infinite;
+}
+
+@keyframes civilizationEnergy {
+
+    0% {
+        top: -120px;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        top: calc(100% + 30px);
+        opacity: 0;
+    }
+}
+
+
+/* ================================================================
+   14 — CIVILIZATION MARKER PULSE
+================================================================ */
+
+.civilization-stage.active
+.civilization-marker {
+    animation:
+        civilizationMarkerPulse 2.8s
+        ease-in-out
+        infinite;
+}
+
+@keyframes civilizationMarkerPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 0 8px
+            rgba(120, 200, 255, .35),
+            0 0 0 5px
+            rgba(120, 200, 255, .04);
+    }
+
+    50% {
+        box-shadow:
+            0 0 22px
+            rgba(120, 200, 255, .8),
+            0 0 0 10px
+            rgba(120, 200, 255, .06);
+    }
+}
+
+
+/* ================================================================
+   15 — STELLAR CIVILIZATION / TYPE II
+================================================================ */
+
+.type-two-visual {
+    position: absolute;
+
+    width:
+        min(48vw, 650px);
+
+    aspect-ratio: 1;
+
+    right: -4vw;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    pointer-events: none;
+
+    opacity: .8;
+}
+
+.stellar-core {
+    position: absolute;
+
+    width: 92px;
+    height: 92px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #fff8d8 16%,
+            #ffd76d 35%,
+            #f09a32 52%,
+            rgba(240, 154, 50, .12) 70%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255, 219, 125, .85),
+
+        0 0 100px
+        rgba(255, 178, 70, .42),
+
+        0 0 190px
+        rgba(255, 155, 60, .15);
+
+    animation:
+        stellarPulse 5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes stellarPulse {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(.97);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.05);
+    }
+}
+
+.stellar-orbit {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    border:
+        1px solid
+        rgba(120, 200, 255, .18);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-18deg);
+}
+
+.stellar-orbit.orbit-1 {
+    width: 220px;
+    height: 120px;
+
+    animation:
+        orbitRotation 18s
+        linear
+        infinite;
+}
+
+.stellar-orbit.orbit-2 {
+    width: 330px;
+    height: 190px;
+
+    animation:
+        orbitRotationReverse 28s
+        linear
+        infinite;
+}
+
+.stellar-orbit.orbit-3 {
+    width: 460px;
+    height: 280px;
+
+    animation:
+        orbitRotation 40s
+        linear
+        infinite;
+}
+
+@keyframes orbitRotation {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(-18deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(342deg);
+    }
+}
+
+@keyframes orbitRotationReverse {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(20deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(-340deg);
+    }
+}
+
+.collector {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        var(--spectral-blue);
+
+    box-shadow:
+        0 0 10px
+        var(--spectral-blue);
+}
+
+.collector.c1 {
+    top: -3px;
+    left: 50%;
+}
+
+.collector.c2 {
+    bottom: -3px;
+    left: 28%;
+}
+
+.collector.c3 {
+    top: 45%;
+    right: -3px;
+}
+
+.collector.c4 {
+    top: 10%;
+    left: 20%;
+}
+
+
+/* ================================================================
+   16 — TYPE III GALACTIC FIELD
+================================================================ */
+
+.type-three-visual {
+    position: absolute;
+
+    width:
+        min(54vw, 760px);
+
+    aspect-ratio: 1;
+
+    right: -8vw;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: .72;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 244, 204, .75) 0%,
+            rgba(165, 205, 255, .3) 8%,
+            rgba(77, 122, 205, .12) 20%,
+            transparent 45%
+        );
+
+    animation:
+        galaxyBreathe 12s
+        ease-in-out
+        infinite alternate;
+}
+
+.type-three-visual::before,
+.type-three-visual::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 15%;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(120, 200, 255, .12);
+
+    transform:
+        rotate(25deg)
+        scaleX(1.8);
+
+    box-shadow:
+        0 0 70px
+        rgba(70, 120, 210, .08);
+}
+
+.type-three-visual::after {
+    transform:
+        rotate(-28deg)
+        scaleX(1.65);
+
+    opacity: .65;
+}
+
+@keyframes galaxyBreathe {
+
+    from {
+        opacity: .55;
+
+        transform:
+            translateY(-50%)
+            scale(.96)
+            rotate(-2deg);
+    }
+
+    to {
+        opacity: .82;
+
+        transform:
+            translateY(-50%)
+            scale(1.04)
+            rotate(2deg);
+    }
+}
+
+
+/* ================================================================
+   17 — COSMIC SCALE REVEAL
+================================================================ */
+
+.scale-stage {
+    opacity: .38;
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease,
+        background .6s ease;
+
+    transform:
+        translateX(-12px);
+}
+
+.scale-stage.visible {
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(120, 200, 255, .025),
+            transparent
+        );
+}
+
+
+/* ================================================================
+   18 — FINAL EARTH
+================================================================ */
+
+.final-earth {
+    animation:
+        earthSignal 4s
+        ease-in-out
+        infinite;
+}
+
+@keyframes earthSignal {
+
+    0%,
+    100% {
+        transform:
+            scale(.9);
+
+        box-shadow:
+            0 0 8px
+            #87cfff,
+
+            0 0 24px
+            rgba(135, 207, 255, .2);
+    }
+
+    50% {
+        transform:
+            scale(1.15);
+
+        box-shadow:
+            0 0 18px
+            #87cfff,
+
+            0 0 55px
+            rgba(135, 207, 255, .45),
+
+            0 0 110px
+            rgba(135, 207, 255, .12);
+    }
+}
+
+
+/* ================================================================
+   19 — SUBTLE ORBITAL RINGS
+================================================================ */
+
+.orbital-background {
+    position: absolute;
+
+    width: 700px;
+    height: 700px;
+
+    border:
+        1px solid
+        rgba(120, 200, 255, .05);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        orbitalBackgroundRotation 70s
+        linear
+        infinite;
+}
+
+.orbital-background::before,
+.orbital-background::after {
+    content: "";
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(120, 200, 255, .045);
+
+    border-radius: 50%;
+}
+
+.orbital-background::before {
+    inset: 90px;
+}
+
+.orbital-background::after {
+    inset: 190px;
+}
+
+@keyframes orbitalBackgroundRotation {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* ================================================================
+   20 — DATA CURSOR
+================================================================ */
+
+.data-cursor::after {
+    content: "▋";
+
+    margin-left: 4px;
+
+    color:
+        var(--plasma-cyan);
+
+    animation:
+        dataCursorBlink 1s
+        steps(1)
+        infinite;
+}
+
+@keyframes dataCursorBlink {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ================================================================
+   MOBILE
+================================================================ */
+
+@media (max-width: 900px) {
+
+    .type-two-visual,
+    .type-three-visual {
+        opacity: .25;
+
+        width: 720px;
+
+        right: -420px;
+    }
+
+    .stellar-orbit.orbit-3 {
+        width: 400px;
+        height: 240px;
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .cosmic-hero::before {
+        animation:
+            none;
+    }
+
+    .scientific-grid {
+        background-size:
+            40px 40px;
+    }
+
+    .type-two-visual,
+    .type-three-visual {
+        opacity: .18;
+    }
+}
+
+
+/* ================================================================
+   REDUCED MOTION
+================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cosmic-hero::before,
+    .cosmos-gradient,
+    .system-online::before,
+    .mip-console::after,
+    .telemetry-value,
+    .mission-pipeline-node::before,
+    .anomaly-panel::before,
+    .civilization-line::after,
+    .civilization-marker,
+    .stellar-core,
+    .stellar-orbit,
+    .type-three-visual,
+    .final-earth,
+    .orbital-background,
+    .data-cursor::after {
+
+        animation: none !important;
+    }
+
+    .hero-content .hero-classification,
+    .hero-content .cosmos-eyebrow,
+    .hero-content .cosmos-title,
+    .hero-content .cosmos-lead,
+    .hero-content .hero-actions,
+    .reveal,
+    .scale-stage {
+
+        opacity: 1;
+
+        transform: none;
+    }
+
+    .question p {
+        filter: none;
+    }
+}
